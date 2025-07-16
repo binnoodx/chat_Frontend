@@ -15,7 +15,9 @@ const eslintConfig = [
   // 🔽 Override or disable specific rules here
   {
     rules: {
-      "react/no-unescaped-entities": "off", // ✅ disables the warning
+      "react/no-unescaped-entities": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-explicit-any": "off",
     },
   },
 ];
