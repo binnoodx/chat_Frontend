@@ -9,14 +9,14 @@ import {
   FaEnvelope,
   FaArrowDown,
 } from "react-icons/fa";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 export default function PortfolioPage() {
+
   const [showArrow, setShowArrow] = useState(false);
   const [message, setMessage] = useState("");
-  const [userDB, setuserDB] = useState("")
   const [chat, setChat] = useState<string[]>([]);
-  const [user, setuser] = useState<string[]>([]);
-
   useEffect(() => {
 
     getDBmessage()
@@ -27,12 +27,23 @@ export default function PortfolioPage() {
   const inpRefName = useRef<HTMLInputElement | null>(null)
   const chatBoxRef = useRef<HTMLDivElement>(null);
 
+  const notify = () => toast.error('Enter Something to Send', {
+    position: "top-right",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: false,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
 
+  });
 
   const getDBmessage = async () => {
+
+
     const res = await fetch("/api/getMessage")
     const response = await res.json()
-    console.log(response.map((i: any) => i.text))
     setChat(response)
   }
 
@@ -40,22 +51,31 @@ export default function PortfolioPage() {
 
   const handleclick = async () => {
     const User = inpRefName.current ? inpRefName.current.value : ""
-    socket.emit("send_message", { name: User ? User : "Anonymous", text: message });
+    if (message.length != 0) socket.emit("send_message", { name: User ? User : "Anonymous", text: message });
     if (inpRefMsg.current) inpRefMsg.current.value = "";
+    setMessage("")
 
-    await fetch("/api/forMessage", {   
-      method: "POST", headers: {
-        "Content-Type": "application/json",
-      }, body: JSON.stringify({
-        message: message,
-        user: inpRefName.current ? inpRefName.current.value : "Anonymous"
+    if (message.length === 0) {
+      notify()
+    }
+
+    else {
+      await fetch("/api/forMessage", {
+        method: "POST", headers: {
+          "Content-Type": "application/json",
+        }, body: JSON.stringify({
+          message: message,
+          user: inpRefName.current ? inpRefName.current.value : "Anonymous"
+        })
       })
-    })
+    }
 
   }
 
+
+
   useEffect(() => {
-    const handleReceiveMessage = (data: string) => {
+    const handleReceiveMessage = (data: any) => {
       setChat((prev) => [...prev, data]);
     };
 
@@ -79,7 +99,8 @@ export default function PortfolioPage() {
 
   return (
     <div className="bg-[#10192e] text-white font-sans min-h-screen  overflow-x-hidden">
-      
+      <ToastContainer />
+
       <div className="homepage  flex flex-col min-sm:flex-row min-sm:justify-evenly justify-start gap-5 mt-10 items-center h-screen">
 
 
@@ -154,7 +175,17 @@ export default function PortfolioPage() {
         {/* Chat Section */}
 
         <div className="chatApp  w-[90vw] min-sm:w-[30vw] flex flex-col min-sm:h-[70vh] h-[60vh]  rounded-t-3xl bg-slate-800">
-          <h1 className="text-xl font-bold text-white text-center py-2">Real time Chating ...</h1>
+          <div className="uppertext flex flex-row justify-evenly items-center">
+
+            {/* {chat.map((msg: any, i) => (
+
+
+<></>
+
+              
+            ))} */}
+            <h1 className="text-xl font-bold text-white text-center py-2">Real time Chating ...</h1>
+          </div>
 
           <div
             ref={chatBoxRef}
@@ -165,26 +196,17 @@ export default function PortfolioPage() {
 
 
             {chat.map((msg: any, i) => (
-
-
-
-
-
               <div key={i} className="textArea flex flex-row mb-2 justify-between item-center  px-1">
-
-
                 <div className="mdgsection w-[90vw] min-sm:w-[20vw] flex flex-row">
                   <span className="text-sm text-slate-400 pr-5">
                     {msg.name || msg.sendBy || "Anonymous"}:
                   </span>
 
 
-                  <h1 className="texty text-white text-sm">
+                 <h1 className="texty text-white text-sm">
                     {msg.text ?? msg}
                   </h1>
                 </div>
-
-
                 <p className="text-[10px] min-sm:text-[12px] italic text-gray-400">
                   {msg.createdAt
                     ? new Date(msg.createdAt).toLocaleString("en-US", {
