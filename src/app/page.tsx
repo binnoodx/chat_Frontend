@@ -184,7 +184,7 @@ export default function PortfolioPage() {
 
               
             ))} */}
-            <h1 className="text-xl font-bold text-white text-center py-2">Real time Chating ...</h1>
+            <h1 className="text-xl font-bold text-white text-center py-2">Real time Chatting ...</h1>
           </div>
 
           <div
@@ -286,7 +286,7 @@ export default function PortfolioPage() {
             "Express Js",
             "MongoDB",
             "Socket.IO",
-            "ZEGOCLOUD",
+            "webRTC",
             "Next-Auth",
             "Clerk",
             "Shadcn",
