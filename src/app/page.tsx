@@ -9,70 +9,65 @@ import {
   FaEnvelope,
   FaArrowDown,
 } from "react-icons/fa";
-import { ToastContainer, toast } from 'react-toastify';
-
+import { ToastContainer, toast } from "react-toastify";
 
 export default function PortfolioPage() {
-
   const [showArrow, setShowArrow] = useState(false);
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState<string[]>([]);
+  const [IsDataLoading, setIsDataLoading] = useState(false);
+
   useEffect(() => {
+    getDBmessage();
+  }, []);
 
-    getDBmessage()
-
-  }, [])
-
-  const inpRefMsg = useRef<HTMLInputElement | null>(null)
-  const inpRefName = useRef<HTMLInputElement | null>(null)
+  const inpRefMsg = useRef<HTMLInputElement | null>(null);
+  const inpRefName = useRef<HTMLInputElement | null>(null);
   const chatBoxRef = useRef<HTMLDivElement>(null);
 
-  const notify = () => toast.error('Enter Something to Send', {
-    position: "top-right",
-    autoClose: 2000,
-    hideProgressBar: true,
-    closeOnClick: false,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
-
-  });
+  const notify = () =>
+    toast.error("Enter Something to Send", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
 
   const getDBmessage = async () => {
-
-
-    const res = await fetch("/api/getMessage")
-    const response = await res.json()
-    setChat(response)
-  }
-
-
+    setIsDataLoading(true);
+    const res = await fetch("/api/getMessage");
+    const response = await res.json();
+    setIsDataLoading(false);
+    setChat(response);
+  };
 
   const handleclick = async () => {
-    const User = inpRefName.current ? inpRefName.current.value : ""
-    if (message.length != 0) socket.emit("send_message", { name: User ? User : "Anonymous", text: message });
+    const User = inpRefName.current ? inpRefName.current.value : "";
+    if (message.length !== 0)
+      socket.emit("send_message", {
+        name: User ? User : "Anonymous",
+        text: message,
+      });
     if (inpRefMsg.current) inpRefMsg.current.value = "";
-    setMessage("")
+    setMessage("");
 
     if (message.length === 0) {
-      notify()
-    }
-
-    else {
+      notify();
+    } else {
       await fetch("/api/forMessage", {
-        method: "POST", headers: {
-          "Content-Type": "application/json",
-        }, body: JSON.stringify({
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           message: message,
-          user: inpRefName.current ? inpRefName.current.value : "Anonymous"
-        })
-      })
+          user: inpRefName.current ? inpRefName.current.value : "Anonymous",
+        }),
+      });
     }
-
-  }
-
-
+  };
 
   useEffect(() => {
     const handleReceiveMessage = (data: any) => {
@@ -98,12 +93,10 @@ export default function PortfolioPage() {
   }, []);
 
   return (
-    <div className="bg-[#10192e] text-white font-sans min-h-screen  overflow-x-hidden">
+    <div className="bg-[#10192e] text-white font-sans min-h-screen overflow-x-hidden">
       <ToastContainer />
 
-      <div className="homepage  flex flex-col min-sm:flex-row min-sm:justify-evenly justify-start gap-5 mt-10 items-center h-screen">
-
-
+      <div className="homepage flex flex-col min-sm:flex-row min-sm:justify-evenly justify-start gap-5 mt-10 items-center h-screen">
         {/* Intro Section */}
         <section className="min-sm:h-screen w-[100vw] min-sm:w-[60vw] flex flex-col min-sm:mt-10 min-sm:mb-10 items-center justify-center text-center relative px-4">
           <motion.h1
@@ -120,7 +113,8 @@ export default function PortfolioPage() {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-base sm:text-lg text-gray-300 max-w-xl px-4 "
           >
-            Hey, I’m a Cross-Platform Full Stack Developer crafting modern apps for web & mobile.
+            Hey, I’m a Cross-Platform Full Stack Developer crafting modern apps
+            for web & mobile.
           </motion.p>
           {showArrow && (
             <motion.div
@@ -134,7 +128,6 @@ export default function PortfolioPage() {
           )}
 
           {/* Project Section */}
-
           <section className="py-16 px-4 sm:px-6 text-center hidden w-full min-sm:flex flex-col">
             <h2 className="text-3xl font-bold text-cyan-400 mb-8">Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto px-2">
@@ -173,68 +166,57 @@ export default function PortfolioPage() {
         </section>
 
         {/* Chat Section */}
-
-        <div className="chatApp  w-[90vw] min-sm:w-[30vw] flex flex-col min-sm:h-[70vh] h-[60vh]  rounded-t-3xl bg-slate-800">
+        <div className="chatApp w-[90vw] min-sm:w-[30vw] flex flex-col min-sm:h-[70vh] h-[60vh] rounded-t-3xl bg-slate-800">
           <div className="uppertext flex flex-row justify-evenly items-center">
-
-            {/* {chat.map((msg: any, i) => (
-
-
-<></>
-
-              
-            ))} */}
-            <h1 className="text-xl font-bold text-white text-center py-2">Real time Chatting ...</h1>
+            <h1 className="text-xl font-bold text-white text-center py-2">
+              Real time Chatting ...
+            </h1>
           </div>
 
           <div
             ref={chatBoxRef}
-            className="flex-1  overflow-y-auto px-4 py-2 text-white"
+            className="flex-1 overflow-y-auto px-4 py-2 text-white"
             style={{ scrollbarWidth: "none" }}
           >
-
-
-
-            {chat.map((msg: any, i) => (
-              <div key={i} className="textArea flex flex-row mb-2 justify-between item-center  px-1">
-                <div className="mdgsection w-[90vw] min-sm:w-[20vw] flex flex-row">
-                  <span className="text-sm text-slate-400 pr-5">
-                    {msg.name || msg.sendBy || "Anonymous"}:
-                  </span>
-
-
-                 <h1 className="texty text-white text-sm">
-                    {msg.text ?? msg}
-                  </h1>
-                </div>
-                <p className="text-[10px] min-sm:text-[12px] italic text-gray-400">
-                  {msg.createdAt
-                    ? new Date(msg.createdAt).toLocaleString("en-US", {
-                      month: "long",
-                      day: "numeric",
-                      hour: "numeric",
-                      minute: "2-digit",
-                      hour12: true,
-                    })
-                    : "Just now"}
-                </p>
-
+            {IsDataLoading ? (
+              <div className="flex items-center justify-center h-full">
+                <p className="text-center text-lg text-gray-300">Loading chat...</p>
               </div>
-            ))}
-
-
-
-
-
-
-
+            ) : (
+              chat.map((msg: any, i) => (
+                <div
+                  key={i}
+                  className="textArea flex flex-row mb-2 justify-between items-center px-1"
+                >
+                  <div className="mdgsection w-[90vw] min-sm:w-[20vw] flex flex-row">
+                    <span className="text-sm text-slate-400 pr-5">
+                      {msg.name || msg.sendBy || "Anonymous"}:
+                    </span>
+                    <h1 className="texty text-white text-sm">
+                      {msg.text ?? msg}
+                    </h1>
+                  </div>
+                  <p className="text-[10px] min-sm:text-[12px] italic text-gray-400">
+                    {msg.createdAt
+                      ? new Date(msg.createdAt).toLocaleString("en-US", {
+                          month: "long",
+                          day: "numeric",
+                          hour: "numeric",
+                          minute: "2-digit",
+                          hour12: true,
+                        })
+                      : "Just now"}
+                  </p>
+                </div>
+              ))
+            )}
           </div>
 
           {/* Fixed Chat Input */}
           <div className="inpsec flex flex-row justify-center gap-2 p-2 bg-[#1e293b]">
             <input
               ref={inpRefName}
-              className="w-[20vw] min-sm:w-[8vw] h-[5vh] bg-slate-600  px-4 border-white  text-white"
+              className="w-[20vw] min-sm:w-[8vw] h-[5vh] bg-slate-600 px-4 border-white text-white"
               type="text"
               placeholder="Name"
             />
@@ -247,14 +229,12 @@ export default function PortfolioPage() {
             />
             <button
               onClick={handleclick}
-              className="bg-slate-500 text-center flex justify-center items-center cursor-pointer text-white w-[8vw] min-sm:w-[5vw] "
+              className="bg-slate-500 text-center flex justify-center items-center cursor-pointer text-white w-[8vw] min-sm:w-[5vw]"
             >
               <BsSend scale={1.5} />
-
             </button>
           </div>
         </div>
-
       </div>
 
       {/* About Me */}
@@ -268,7 +248,9 @@ export default function PortfolioPage() {
         >
           <h2 className="text-3xl font-bold text-cyan-400 mb-4">About Me</h2>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            I’m a self-taught full stack cross platform developer based in Nepal. I love building real-time, scalable applications with technologies like React, Next.js, MongoDB, and React Native.
+            I’m a self-taught full stack cross platform developer based in Nepal.
+            I love building real-time, scalable applications with technologies
+            like React, Next.js, MongoDB, and React Native.
           </p>
         </motion.div>
       </section>
@@ -288,7 +270,7 @@ export default function PortfolioPage() {
             "Socket.IO",
             "webRTC",
             "Next-Auth",
-            "Clerk",
+            "REST APIs",
             "Shadcn",
             "Tailwind CSS",
           ].map((tech) => (
@@ -297,7 +279,9 @@ export default function PortfolioPage() {
               whileHover={{ scale: 1.1 }}
               className="bg-[#1e293b] rounded-lg py-4 px-2 shadow-md shadow-cyan-400/20"
             >
-              <p className="text-lg font-semibold text-white text-center">{tech}</p>
+              <p className="text-lg font-semibold text-white text-center">
+                {tech}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -305,7 +289,9 @@ export default function PortfolioPage() {
 
       {/* Contact */}
       <section className="py-16 px-4 sm:px-6 text-center bg-[#0f172a]">
-        <h2 className="text-3xl font-bold text-cyan-400 mb-6">Connect With Me</h2>
+        <h2 className="text-3xl font-bold text-cyan-400 mb-6">
+          Connect With Me
+        </h2>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -321,7 +307,7 @@ export default function PortfolioPage() {
             <FaGithub size={30} />
           </a>
           <a
-            href="https://linkedin.com/in/your-linkedin"
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
           >
