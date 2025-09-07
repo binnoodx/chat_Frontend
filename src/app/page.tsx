@@ -11,6 +11,11 @@ import {
 } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 
+import * as React from 'react';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+
 export default function PortfolioPage() {
   const [showArrow, setShowArrow] = useState(false);
   const [message, setMessage] = useState("");
@@ -96,7 +101,7 @@ export default function PortfolioPage() {
     <div className="bg-[#10192e] text-white font-sans min-h-screen overflow-x-hidden">
       <ToastContainer />
 
-      <div className="homepage flex flex-col min-sm:flex-row min-sm:justify-evenly justify-start gap-5 mt-10 items-center h-screen">
+      <div className="homepage flex flex-col min-sm:flex-row min-sm:justify-evenly justify-evenly gap-5 mt-10 items-center h-screen">
         {/* Intro Section */}
         <section className="min-sm:h-screen w-[100vw] min-sm:w-[60vw] flex flex-col min-sm:mt-10 min-sm:mb-10 items-center justify-center text-center relative px-4">
           <motion.h1
@@ -116,12 +121,22 @@ export default function PortfolioPage() {
             Hey, I’m a Cross-Platform Full Stack Developer crafting modern apps
             for web & mobile.
           </motion.p>
+
+          <div className="buttons lg:hidden w-[70vw] flex flex-row justify-evenly gap-4 items-center mt-6">
+            <a href="#project_mobile"><Button variant="contained" color="success">
+              Projects
+            </Button></a>
+            <a href="#tech_stack"><Button variant="contained" color="success">
+              Tech Stack
+            </Button></a>
+          </div>
+
           {showArrow && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="absolute bottom-10 hidden min-sm:flex animate-bounce text-cyan-400"
+              className="absolute bottom-10 hidden  min-sm:flex animate-bounce text-cyan-400"
             >
               <FaArrowDown size={28} />
             </motion.div>
@@ -134,13 +149,29 @@ export default function PortfolioPage() {
               {[
                 {
                   title: "RandomlyTV",
+                  isCompleted: false,
                   description:
                     "OmeTV-style video chat app using ZEGOCLOUD, Socket.IO & Next.js. Includes random matchmaking, skip, and mobile-ready design.",
                 },
                 {
                   title: "BeatIOE",
+                  isCompleted: true,
                   description:
                     "Quiz platform for engineering students. Full-stack app with question feeds, ranking, solutions, and user authentication.",
+                  link: "https://beatioe.vercel.app",
+                },
+                {
+                  title: "Productive_Me",
+                  isCompleted: false,
+                  description:
+                    "A Full-stack webapp to track your daily todos , journals , goals and make you productive.",
+                  link: "https://beatioe.vercel.app",
+                },
+                {
+                  title: "E-commerce WebApp",
+                  isCompleted: false,
+                  description:
+                    "A Full-stack Ecommerce website including optimize performamce , Better UI/UX and ready to serve website.",
                   link: "https://beatioe.vercel.app",
                 },
               ].map((project, idx) => (
@@ -150,12 +181,21 @@ export default function PortfolioPage() {
                   className="bg-[#1e293b] p-6 rounded-xl shadow-md shadow-cyan-500/20 text-left"
                 >
                   <h3 className="text-xl font-bold text-white mb-2">
-                    {project.link ? (
-                      <a href={project.link} target="_blank" rel="noreferrer">
-                        {project.title}
-                      </a>
-                    ) : (
-                      project.title
+
+                    {(
+                      <div className="flex flex-row gap-3">
+                        <a href={project.link} target="_blank" rel="noreferrer">
+                          {project.title}
+                        </a>
+                        <Stack spacing={1} sx={{ alignItems: 'center' }}>
+                          <Stack direction="row" spacing={1}>
+                            {project.isCompleted ? <Chip label="Completed" color="success" /> : <Chip label="Working" color="primary" />}
+
+                          </Stack>
+
+                        </Stack>
+
+                      </div>
                     )}
                   </h3>
                   <p className="text-gray-300">{project.description}</p>
@@ -199,12 +239,12 @@ export default function PortfolioPage() {
                   <p className="text-[10px] min-sm:text-[12px] italic text-gray-400">
                     {msg.createdAt
                       ? new Date(msg.createdAt).toLocaleString("en-US", {
-                          month: "long",
-                          day: "numeric",
-                          hour: "numeric",
-                          minute: "2-digit",
-                          hour12: true,
-                        })
+                        month: "long",
+                        day: "numeric",
+                        hour: "numeric",
+                        minute: "2-digit",
+                        hour12: true,
+                      })
                       : "Just now"}
                   </p>
                 </div>
@@ -255,8 +295,72 @@ export default function PortfolioPage() {
         </motion.div>
       </section>
 
+      <section id="project_mobile" className="py-16 px-4 sm:px-6 text-center lg:hidden w-full min-sm:flex flex-col">
+        <h2 className="text-3xl font-bold text-cyan-400 mb-8">Projects</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto px-2">
+          {[
+            {
+              title: "RandomlyTV",
+              isCompleted: false,
+              description:
+                "OmeTV-style video chat app using ZEGOCLOUD, Socket.IO & Next.js. Includes random matchmaking, skip, and mobile-ready design.",
+            },
+            {
+              title: "BeatIOE",
+              isCompleted: true,
+              description:
+                "Quiz platform for engineering students. Full-stack app with question feeds, ranking, solutions, and user authentication.",
+              link: "https://beatioe.vercel.app",
+            },
+            {
+              title: "Productive_Me",
+              isCompleted: false,
+              description:
+                "A Full-stack webapp to track your daily todos , journals , goals and make you productive.",
+              link: "https://beatioe.vercel.app",
+            },
+            {
+              title: "E-commerce WebApp",
+              isCompleted: false,
+              description:
+                "A Full-stack Ecommerce website including optimize performamce , Better UI/UX and ready to serve website.",
+              link: "https://beatioe.vercel.app",
+            },
+          ].map((project, idx) => (
+            <motion.div
+              key={idx}
+              whileHover={{ scale: 1.03 }}
+              className="bg-[#1e293b] p-6 rounded-xl shadow-md shadow-cyan-500/20 text-left"
+            >
+              <h3 className="text-xl font-bold text-white mb-2">
+
+                {(
+                  <div className="flex flex-row gap-3">
+                    <a href={project.link} target="_blank" rel="noreferrer">
+                      {project.title}
+                    </a>
+                    <Stack spacing={1} sx={{ alignItems: 'center' }}>
+                      <Stack direction="row" spacing={1}>
+                        {project.isCompleted ? <Chip label="Completed" color="success" /> : <Chip label="Working" color="primary" />}
+
+                      </Stack>
+
+                    </Stack>
+
+                  </div>
+                )}
+              </h3>
+              <p className="text-gray-300">{project.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+
+
+
       {/* Tech Stack */}
-      <section className="py-16 px-4 sm:px-6 text-center">
+      <section id="tech_stack" className="py-16 px-4 sm:px-6 text-center">
         <h2 className="text-3xl font-bold text-cyan-400 mb-8">Tech Stack</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
           {[
