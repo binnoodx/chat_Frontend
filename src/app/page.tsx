@@ -116,10 +116,10 @@ export default function PortfolioPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-base sm:text-lg text-gray-300 max-w-xl px-4 "
+            className="text-base sm:text-lg text-gray-300 max-w-xl px-4 italic"
           >
             Hey, I’m a Cross-Platform Full Stack Developer crafting modern apps
-            for web & mobile.
+            using React & React Native for Frontend and Express & Django for Backend..
           </motion.p>
 
           <div className="buttons lg:hidden w-[70vw] flex flex-row justify-evenly gap-4 items-center mt-6">
@@ -148,10 +148,10 @@ export default function PortfolioPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto px-2">
               {[
                 {
-                  title: "RandomlyTV",
+                  title: "Web Auth",
                   isCompleted: false,
                   description:
-                    "OmeTV-style video chat app using ZEGOCLOUD, Socket.IO & Next.js. Includes random matchmaking, skip, and mobile-ready design.",
+                    "Ready to use custom web authentication based on NextAuth and JWT for time-based session and Email Sending feature.",
                 },
                 {
                   title: "BeatIOE",
@@ -159,6 +159,14 @@ export default function PortfolioPage() {
                   description:
                     "Quiz platform for engineering students. Full-stack app with question feeds, ranking, solutions, and user authentication.",
                   link: "https://beatioe.vercel.app",
+                },
+                
+                {
+                  title: "Movie App",
+                  isCompleted: true,
+                  description:
+                    "App made on React Native that fetch Movie Detail from TMDB and Display Trending as well as Search Queries",
+                  
                 },
                 {
                   title: "Productive_Me",
