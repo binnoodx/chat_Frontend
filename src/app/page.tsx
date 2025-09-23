@@ -148,10 +148,11 @@ export default function PortfolioPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto px-2">
               {[
                 {
-                  title: "Web Auth",
-                  isCompleted: false,
+                  title: "Authentication",
+                  isCompleted: true,
                   description:
                     "Ready to use custom web authentication based on NextAuth and JWT for time-based session and Email Sending feature.",
+                  link:"https://github.com/binnoodx/Authentication"
                 },
                 {
                   title: "BeatIOE",
@@ -166,6 +167,7 @@ export default function PortfolioPage() {
                   isCompleted: true,
                   description:
                     "App made on React Native that fetch Movie Detail from TMDB and Display Trending as well as Search Queries",
+                  link:"https://github.com/binnoodx/MovieApp"
                   
                 },
                 {
@@ -180,7 +182,7 @@ export default function PortfolioPage() {
                   isCompleted: false,
                   description:
                     "A Full-stack Ecommerce website including optimize performamce , Better UI/UX and ready to serve website.",
-                  link: "https://beatioe.vercel.app",
+                  link: "https://github.com/binnoodx/Ecommer_x-Frontend",
                 },
               ].map((project, idx) => (
                 <motion.div
@@ -373,11 +375,12 @@ export default function PortfolioPage() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
           {[
             "React",
-            "Next Js",
             "React Native",
+            "Express Js",
+            "Python",
+            "Next Js",
             "Expo",
             "Node Js",
-            "Express Js",
             "MongoDB",
             "Socket.IO",
             "webRTC",
