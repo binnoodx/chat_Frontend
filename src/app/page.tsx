@@ -101,7 +101,7 @@ export default function PortfolioPage() {
     <div className="bg-[#10192e] text-white font-sans min-h-screen overflow-x-hidden">
       <ToastContainer />
 
-      <div className="homepage flex flex-col min-sm:flex-row min-sm:justify-evenly justify-evenly gap-5 mt-10 items-center h-screen">
+      <div className="homepage flex flex-col min-sm:flex-row min-sm:justify-start justify-start gap-10 mt-20 items-center h-screen">
         {/* Intro Section */}
         <section className="min-sm:h-screen w-[100vw] min-sm:w-[60vw] flex flex-col min-sm:mt-10 min-sm:mb-10 items-center justify-center text-center relative px-4">
           <motion.h1
@@ -216,10 +216,10 @@ export default function PortfolioPage() {
         </section>
 
         {/* Chat Section */}
-        <div className="chatApp w-[90vw] min-sm:w-[30vw] flex flex-col min-sm:h-[70vh] h-[60vh] rounded-t-3xl bg-slate-800">
+        <div className="chatApp w-[90vw] min-sm:w-[30vw] flex flex-col min-sm:h-[70vh] h-[50vh] rounded-t-3xl bg-slate-800">
           <div className="uppertext flex flex-row justify-evenly items-center">
             <h1 className="text-xl font-bold text-white text-center py-2">
-              Real time Chatting ...
+              Real time Chatting...
             </h1>
           </div>
 
@@ -329,6 +329,16 @@ export default function PortfolioPage() {
                 "A Full-stack webapp to track your daily todos , journals , goals and make you productive.",
               link: "https://beatioe.vercel.app",
             },
+            
+                
+                {
+                  title: "Movie App",
+                  isCompleted: true,
+                  description:
+                    "App made on React Native that fetch Movie Detail from TMDB and Display Trending as well as Search Queries",
+                  link:"https://github.com/binnoodx/MovieApp"
+                  
+                },
             {
               title: "E-commerce WebApp",
               isCompleted: false,
