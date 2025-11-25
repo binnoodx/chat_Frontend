@@ -3,21 +3,27 @@ import { useEffect, useState, useRef } from "react";
 import { socket } from "./socket";
 import { BsSend } from "react-icons/bs";
 import { motion } from "framer-motion";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaEnvelope,
-  FaArrowDown,
-} from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
-
 import * as React from 'react';
-import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import { images } from "./constants/images";
+import { Chip, Stack } from "@mui/material";
+import SpotlightCard from "./Components/Card";
+import "@/app/forFonts.css"
+import Link from "next/link";
+
 
 export default function PortfolioPage() {
-  const [showArrow, setShowArrow] = useState(false);
+  const [active, setActive] = useState<number | null>(null);
+  const [chatShow, setchatShow] = useState(false)
+  const [techStackShow, setTechStackShow] = useState(false)
+  const [showProjects, setShowProjects] = useState(false)
+  const [showAboutMe, setshowAboutMe] = useState(false)
+  const [showImages, setshowImages] = useState(false)
+  const [showResources, setshowResources] = useState(false)
+  const [showBookie, setshowBookie] = useState(false)
+  const [showSocialHandles, setshowSocialHandles] = useState(false)
+
+
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState<string[]>([]);
   const [IsDataLoading, setIsDataLoading] = useState(false);
@@ -92,135 +98,125 @@ export default function PortfolioPage() {
     }
   }, [chat]);
 
-  useEffect(() => {
-    const timeout = setTimeout(() => setShowArrow(true), 3000);
-    return () => clearTimeout(timeout);
-  }, []);
-
   return (
-    <div className="bg-[#10192e] text-white font-sans min-h-screen overflow-x-hidden">
+    <div className="  text-white font-sans min-h-screen overflow-x-hidden">
       <ToastContainer />
 
-      <div className="homepage flex flex-col min-sm:flex-row min-sm:justify-start justify-start gap-10 mt-20 items-center h-screen">
-        {/* Intro Section */}
-        <section className="min-sm:h-screen w-[100vw] min-sm:w-[60vw] flex flex-col min-sm:mt-10 min-sm:mb-10 items-center justify-center text-center relative px-4">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4"
-          >
-            <span className="text-cyan-400">Binod's Homepage 👋</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-base sm:text-lg text-gray-300 max-w-xl px-4 italic"
-          >
-            Hey, I’m a Cross-Platform Full Stack Developer crafting modern apps
-            using React & React Native for Frontend and Express & Django for Backend..
-          </motion.p>
+      <div className="homepage bg-[url('https://r4.wallpaperflare.com/wallpaper/974/565/254/windows-11-windows-10-minimalism-hd-wallpaper-c876bde870303c5820cce16ed8a244ca.jpg')]  w-screen bg-cover flex flex-col-reverse min-sm:flex-row items-center justify-end py-10  lg:justify-between     h-[100vh]">
 
-          <div className="buttons lg:hidden w-[70vw] flex flex-row justify-evenly gap-4 items-center mt-6">
-            <a href="#project_mobile"><Button variant="contained" color="success">
-              Projects
-            </Button></a>
-            <a href="#tech_stack"><Button variant="contained" color="success">
-              Tech Stack
-            </Button></a>
-          </div>
 
-          {showArrow && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="absolute bottom-10 hidden  min-sm:flex animate-bounce text-cyan-400"
-            >
-              <FaArrowDown size={28} />
-            </motion.div>
-          )}
 
-          {/* Project Section */}
-          <section className="py-16 px-4 sm:px-6 text-center hidden w-full min-sm:flex flex-col">
-            <h2 className="text-3xl font-bold text-cyan-400 mb-8">Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto px-2">
-              {[
-                {
-                  title: "Authentication",
-                  isCompleted: true,
-                  description:
-                    "Ready to use custom web authentication based on NextAuth and JWT for time-based session and Email Sending feature.",
-                  link:"https://github.com/binnoodx/Authentication"
-                },
-                {
-                  title: "BeatIOE",
-                  isCompleted: true,
-                  description:
-                    "Quiz platform for engineering students. Full-stack app with question feeds, ranking, solutions, and user authentication.",
-                  link: "https://beatioe.vercel.app",
-                },
-                
-                {
-                  title: "Movie App",
-                  isCompleted: true,
-                  description:
-                    "App made on React Native that fetch Movie Detail from TMDB and Display Trending as well as Search Queries",
-                  link:"https://github.com/binnoodx/MovieApp"
-                  
-                },
-                {
-                  title: "Productive_Me",
-                  isCompleted: false,
-                  description:
-                    "A Full-stack webapp to track your daily todos , journals , goals and make you productive.",
-                  link: "https://beatioe.vercel.app",
-                },
-                {
-                  title: "E-commerce WebApp",
-                  isCompleted: false,
-                  description:
-                    "A Full-stack Ecommerce website including optimize performamce , Better UI/UX and ready to serve website.",
-                  link: "https://github.com/binnoodx/Ecommer_x-Frontend",
-                },
-              ].map((project, idx) => (
-                <motion.div
-                  key={idx}
-                  whileHover={{ scale: 1.03 }}
-                  className="bg-[#1e293b] p-6 rounded-xl shadow-md shadow-cyan-500/20 text-left"
-                >
-                  <h3 className="text-xl font-bold text-white mb-2">
 
-                    {(
-                      <div className="flex flex-row gap-3">
-                        <a href={project.link} target="_blank" rel="noreferrer">
-                          {project.title}
-                        </a>
-                        <Stack spacing={1} sx={{ alignItems: 'center' }}>
-                          <Stack direction="row" spacing={1}>
-                            {project.isCompleted ? <Chip label="Completed" color="success" /> : <Chip label="Working" color="primary" />}
+        <div className="insideFolders flex lg:flex-col flex-col justify-center lg:justify-start lg:item-start ">
+          <div className="folders lg:mx-10 mx-5 flex flex-row lg:flex-col  gap-5 ">
 
-                          </Stack>
 
-                        </Stack>
-
-                      </div>
-                    )}
-                  </h3>
-                  <p className="text-gray-300">{project.description}</p>
-                </motion.div>
-              ))}
+            <div onClick={() => {
+              setActive(1)
+              setshowAboutMe(true)
+            }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
+              <img src={images.userFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
+              <h1 className="text-xs mt-1 normalFont">About Me</h1>
             </div>
-          </section>
-        </section>
+
+
+
+            <div onClick={() => {
+              setActive(2)
+              setShowProjects(true)
+            }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
+              <img src={images.projects.src} className="lg:h-16 lg:w-16 h-12" alt="" />
+              <h1 className="text-xs mt-1 normalFont">Projects</h1>
+            </div>
+
+
+            <div onClick={() => {
+              setActive(3)
+              setTechStackShow(true)
+            }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
+              <img src={images.techFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
+              <h1 className="text-xs mt-1 normalFont">TechStack</h1>
+            </div>
+
+
+            <div onClick={() => {
+              setActive(4)
+              setchatShow(true)
+            }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
+              <img src={images.chatLogo.src} className="lg:h-16 lg:w-16 h-12" alt="" />
+              <h1 className="text-xs mt-1 normalFont">Chat</h1>
+            </div>
+
+
+            <div onClick={() => {
+              setActive(5)
+              setshowImages(true)
+            }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
+              <img src={images.imageFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
+              <h1 className="text-xs mt-1 normalFont">Images</h1>
+            </div>
+
+
+
+          </div>
+          <div className="folders lg:mx-10 mx-5 flex mt-3 flex-row lg:flex-col  gap-5 ">
+            <div onClick={() => {
+              setActive(6)
+              setshowSocialHandles(true)
+            }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
+              <img src={images.contactFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
+              <h1 className="text-xs mt-1 normalFont">Social Handles</h1>
+            </div>
+
+
+
+            <div onClick={() => {
+              setActive(7)
+              setshowResources(true)
+            }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
+              <img src={images.DocumentFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
+              <h1 className="text-xs mt-1 normalFont">Resources</h1>
+            </div>
+
+
+            <div onClick={() => {
+              setActive(8)
+              setshowBookie(true)
+            }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
+              <img src={images.bookieFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
+              <h1 className="text-xs mt-1 normalFont">Book Collection</h1>
+            </div>
+
+
+          </div>
+        </div>
+
+
+
+        <div className="cardSection lg:mr-[30vw]">
+          <SpotlightCard />
+        </div>
+
 
         {/* Chat Section */}
-        <div className="chatApp w-[90vw] min-sm:w-[30vw] flex flex-col min-sm:h-[70vh] h-[50vh] rounded-t-3xl bg-slate-800">
-          <div className="uppertext flex flex-row justify-evenly items-center">
-            <h1 className="text-xl font-bold text-white text-center py-2">
-              Real time Chatting...
+        <div
+          className={
+            chatShow
+              ? `chatApp absolute border-1 border-white w-[90vw] lg:w-[40vw] lg:ml-[40vw]
+          flex flex-col min-sm:h-[70vh] h-[75vh] lg:h-[75vh] bg-slate-800
+          ${active === 4 ? "z-1" : "z-0"}`
+              : `chatApp w-[40vw] mr-[20vw] hidden flex-col min-sm:h-[70vh]
+          h-[50vh] bg-slate-800`
+          }
+        >
+          <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
+            <h1 className="text-sm normalFont text-center py-2">
+              Let's Talk Real Time
             </h1>
+
+            <button onClick={() => setchatShow(false)} className="px-3 cursor-pointer py-1 bg-red-500">X</button>
+
+
           </div>
 
           <div
@@ -263,7 +259,7 @@ export default function PortfolioPage() {
           </div>
 
           {/* Fixed Chat Input */}
-          <div className="inpsec flex flex-row justify-center gap-2 p-2 bg-[#1e293b]">
+          <div className="inpsec flex w-full flex-row justify-center gap-2 p-2 bg-[#1e293b]">
             <input
               ref={inpRefName}
               className="w-[20vw] min-sm:w-[8vw] h-[5vh] bg-slate-600 px-4 border-white text-white"
@@ -285,169 +281,377 @@ export default function PortfolioPage() {
             </button>
           </div>
         </div>
-      </div>
 
-      {/* About Me */}
-      <section className="py-16 px-4 sm:px-6 text-center bg-[#0e1a2b]">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="max-w-3xl mx-auto"
-        >
-          <h2 className="text-3xl font-bold text-cyan-400 mb-4">About Me</h2>
-          <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            I’m a self-taught full stack cross platform developer based in Nepal.
-            I love building real-time, scalable applications with technologies
-            like React, Next.js, MongoDB, and React Native.
-          </p>
-        </motion.div>
-      </section>
 
-      <section id="project_mobile" className="py-16 px-4 sm:px-6 text-center lg:hidden w-full min-sm:flex flex-col">
-        <h2 className="text-3xl font-bold text-cyan-400 mb-8">Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto px-2">
-          {[
-            {
-              title: "RandomlyTV",
-              isCompleted: false,
-              description:
-                "OmeTV-style video chat app using ZEGOCLOUD, Socket.IO & Next.js. Includes random matchmaking, skip, and mobile-ready design.",
-            },
-            {
-              title: "BeatIOE",
-              isCompleted: true,
-              description:
-                "Quiz platform for engineering students. Full-stack app with question feeds, ranking, solutions, and user authentication.",
-              link: "https://beatioe.vercel.app",
-            },
-            {
-              title: "Productive_Me",
-              isCompleted: false,
-              description:
-                "A Full-stack webapp to track your daily todos , journals , goals and make you productive.",
-              link: "https://beatioe.vercel.app",
-            },
-            
-                
-                {
-                  title: "Movie App",
-                  isCompleted: true,
-                  description:
-                    "App made on React Native that fetch Movie Detail from TMDB and Display Trending as well as Search Queries",
-                  link:"https://github.com/binnoodx/MovieApp"
-                  
-                },
-            {
-              title: "E-commerce WebApp",
-              isCompleted: false,
-              description:
-                "A Full-stack Ecommerce website including optimize performamce , Better UI/UX and ready to serve website.",
-              link: "https://beatioe.vercel.app",
-            },
-          ].map((project, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ scale: 1.03 }}
-              className="bg-[#1e293b] p-6 rounded-xl shadow-md shadow-cyan-500/20 text-left"
-            >
-              <h3 className="text-xl font-bold text-white mb-2">
+        {/* Tech Stack Section */}
 
-                {(
-                  <div className="flex flex-row gap-3">
-                    <a href={project.link} target="_blank" rel="noreferrer">
-                      {project.title}
-                    </a>
-                    <Stack spacing={1} sx={{ alignItems: 'center' }}>
-                      <Stack direction="row" spacing={1}>
-                        {project.isCompleted ? <Chip label="Completed" color="success" /> : <Chip label="Working" color="primary" />}
+        <section id="tech_stack" className={techStackShow ?  `${active === 3 ? "z-1" : "z-0"} gap-5 border-1 w-[90vw] lg:w-auto h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+          <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
+            <h1 className="text-sm normalFont text-center py-2">
+              Binod's Tech Stack
+            </h1>
+
+            <button onClick={() => setTechStackShow(false)} className="px-3 cursor-pointer py-1 bg-red-500">X</button>
+
+
+          </div>
+          <div className="grid mt-5 px-4 py-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:gap-6 max-w-4xl mx-auto">
+            {[
+              "React",
+              "React Native",
+              "Express Js",
+              "Python",
+              "Next Js",
+              "Expo",
+              "Node Js",
+              "MongoDB",
+              "Socket.IO",
+              "webRTC",
+              "Next-Auth",
+              "REST APIs",
+              "Shadcn",
+              "Tailwind CSS",
+            ].map((tech) => (
+              <motion.div
+                key={tech}
+                whileHover={{ scale: 1.1 }}
+                className="bg-slate-600 mx-2 my-1 rounded-lg py-4 px-2 shadow-md shadow-cyan-400/20"
+              >
+                <p className="lg:text-lg text-sm font-semibold text-white text-center">
+                  {tech}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* About me Section */}
+
+        <section id="about_me" className={showAboutMe ? `${active === 1 ? "z-1" : "z-0"} gap-5 border-1 w-[90vw] lg:w-[50vw] overflow-scroll lg:overflow-hidden  h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+          <div className="uppertext fixed lg:relative w-[90vw] lg:w-auto  bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
+            <h1 className="text-sm normalFont text-center py-2">
+              All about Binod
+            </h1>
+
+            <button onClick={() => setshowAboutMe(false)} className="px-3 cursor-pointer py-1 bg-red-500">X</button>
+
+
+          </div>
+          <div className="mt-16">
+
+
+            <h1 className="text-start text-slate-300 px-10 paraFont py-2">Hello World , This is <br></br><span className="normalFont text-4xl font-extrabold">Binod Sharma</span><br></br> An aspiring and  multidisciplinary Software Developer Engineer from Nepal. Currently, I am pursuing my Bsc. CSIT at Patan Mutliple Campus. I have high urge to build projects that doesn't even make sense. All I do is put all Creativity and Logics for best outcomes. Choosing Programming over other is best thing ever done in my life. <br></br><br></br>Behind Programming I have several hobbies like <br></br>- Competitive Programming<br></br>- Reading Novels and manga<br></br>- Playing Chess<br></br>- Touring in Bike<br></br>- Doing Maths and Physics<br></br>- Listening Music<br></br>- Photography<br></br>- Watching Anime </h1>
+
+
+
+
+          </div>
+
+        </section>
+
+        {/* Images Section */}
+
+        <section className={showImages ? ` ${active === 5 ? "z-1" : "z-0"} gap-5 border-1 w-[90vw] lg:w-[50vw]  h-[75vh]  border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+          <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
+            <h1 className="text-sm normalFont text-center py-2">
+              Images By Binod
+            </h1>
+
+            <button onClick={() => setshowImages(false)} className="px-3 cursor-pointer py-1 bg-red-500">X</button>
+
+
+          </div>
+          <div className="">
+
+
+            <h1 className="text-start text-slate-300 px-10 paraFont py-2">Sorry No Image Available Right Now</h1>
+
+
+
+
+          </div>
+
+        </section>
+
+        {/* Projects Section */}
+        <section className={showProjects ? ` ${active === 2 ? "z-1" : "z-0"} bg-slate-700 border-2  border-slate-800 w-[90vw] lg:w-auto h-[75vh] lg:h-auto lg:overflow-hidden overflow-y-scroll    absolute lg:ml-[38vw] flex-col` : " bg-slate-700 border-2 hidden border-slate-800   absolute ml-[38vw] flex-col"}>
+          <div className="uppertext  overflow-hidden lg:w-full  w-[90vw] bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
+            <h1 className="text-sm normalFont text-center  py-2">
+              Binod's Projects
+            </h1>
+
+            <button onClick={() => setShowProjects(false)} className="px-3 cursor-pointer py-1 bg-red-500">X</button>
+
+
+          </div>
+          <div className="grid  grid-cols-1 py-10 px-8 md:grid-cols-2 gap-6 max-w-5xl mx-auto ">
+            {[
+              {
+                title: "Authentication",
+                isCompleted: true,
+                description:
+                  "Ready to use custom web authentication based on NextAuth and JWT for time-based session and Email Sending feature.",
+                link: "https://github.com/binnoodx/Authentication"
+              },
+              {
+                title: "BeatIOE",
+                isCompleted: true,
+                description:
+                  "Quiz platform for engineering students. Full-stack app with question feeds, ranking, solutions, and user authentication.",
+                link: "https://beatioe.vercel.app",
+              },
+
+              {
+                title: "Movie App",
+                isCompleted: true,
+                description:
+                  "App made on React Native that fetch Movie Detail from TMDB and Display Trending as well as Search Queries",
+                link: "https://github.com/binnoodx/MovieApp"
+
+              },
+              {
+                title: "Productive_Me",
+                isCompleted: false,
+                description:
+                  "A Full-stack webapp to track your daily todos , journals , goals and make you productive.",
+                link: "https://beatioe.vercel.app",
+              },
+              {
+                title: "E-commerce WebApp",
+                isCompleted: false,
+                description:
+                  "A Full-stack Ecommerce website including optimize performamce , Better UI/UX and ready to serve website.",
+                link: "https://github.com/binnoodx/Ecommer_x-Frontend",
+              },
+            ].map((project, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.03 }}
+                className="bg-[#1e293b] p-6 rounded-xl shadow-md shadow-cyan-500/20 text-left"
+              >
+                <h3 className="text-xl font-bold text-white mb-2">
+
+                  {(
+                    <div className="flex flex-row gap-3">
+                      <a href={project.link} target="_blank" rel="noreferrer">
+                        {project.title}
+                      </a>
+                      <Stack spacing={1} sx={{ alignItems: 'center' }}>
+                        <Stack direction="row" spacing={1}>
+                          {project.isCompleted ? <Chip label="Completed" color="success" /> : <Chip label="Working" color="primary" />}
+
+                        </Stack>
 
                       </Stack>
 
-                    </Stack>
+                    </div>
+                  )}
+                </h3>
+                <p className="text-gray-300 text-xs lg:text-sm">{project.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
 
-                  </div>
-                )}
-              </h3>
-              <p className="text-gray-300">{project.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+        {/* Social Handle Section */}
+
+        <section className={showSocialHandles ? ` ${active === 6 ? "z-1" : "z-0"} gap-5 border-1 w-[90vw] lg:max-w-[20vw]   h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+          <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
+            <h1 className="text-sm normalFont text-center py-2">
+              Let's Connect
+            </h1>
+
+            <button onClick={() => setshowSocialHandles(false)} className="px-3 cursor-pointer py-1 bg-red-500">X</button>
+
+
+          </div>
+          <div className="flex flex-col">
+
+
+            <Link target="_blank" href={"https://www.facebook.com/binod.sharma.616611/"} className="oneByone flex flex-row items-center mx-5 my-2 gap-3">
+              <img src={images.facebook.src} className="h-10" alt="" />
+              <h1 className="paraFont"> /Binod Sharma </h1>
+            </Link>
+            <Link target="_blank" href={"https://www.instagram.com/the_binodd"} className="oneByone flex flex-row items-center mx-5 my-2 gap-3">
+              <img src={images.instagram.src} className="h-10" alt="" />
+              <h1 className="paraFont"> /the_binodd </h1>
+            </Link>
+            <Link target="_blank" href={"www.linkedin.com/in/binoddsharma"} className="oneByone flex flex-row items-center mx-5 my-2 gap-3">
+              <img src={images.linkedin.src} className="h-10" alt="" />
+              <h1 className="paraFont"> /Binod Sharma </h1>
+            </Link>
+            <Link target="_blank" href={"https://x.com/the_binodd"} className="oneByone flex flex-row items-center mx-5 my-2 gap-3">
+              <img src={images.twitter.src} className="h-10" alt="" />
+              <h1 className="paraFont"> /the_binod </h1>
+            </Link>
+            <Link target="_blank" href={"https://www.youtube.com/@binoodx"} className="oneByone flex flex-row items-center mx-5 my-2 gap-3">
+              <img src={images.youtube.src} className="h-10" alt="" />
+              <h1 className="paraFont"> /binoodx </h1>
+            </Link>
+            <Link target="_blank" href={"https://github.com/binnoodx"} className="oneByone flex flex-row items-center mx-5 my-2 gap-3">
+              <img src={images.github.src} className="h-10" alt="" />
+              <h1 className="paraFont"> /binnoodx </h1>
+            </Link>
+            <Link target="_blank" href={"https://www.tiktok.com/@binodx_"} className="oneByone flex flex-row items-center mx-5 my-2 gap-3">
+              <img src={images.tiktok.src} className="h-10" alt="" />
+              <h1 className="paraFont"> /binodx_ </h1>
+            </Link>
 
 
 
 
-      {/* Tech Stack */}
-      <section id="tech_stack" className="py-16 px-4 sm:px-6 text-center">
-        <h2 className="text-3xl font-bold text-cyan-400 mb-8">Tech Stack</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          {[
-            "React",
-            "React Native",
-            "Express Js",
-            "Python",
-            "Next Js",
-            "Expo",
-            "Node Js",
-            "MongoDB",
-            "Socket.IO",
-            "webRTC",
-            "Next-Auth",
-            "REST APIs",
-            "Shadcn",
-            "Tailwind CSS",
-          ].map((tech) => (
-            <motion.div
-              key={tech}
-              whileHover={{ scale: 1.1 }}
-              className="bg-[#1e293b] rounded-lg py-4 px-2 shadow-md shadow-cyan-400/20"
-            >
-              <p className="text-lg font-semibold text-white text-center">
-                {tech}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+          </div>
 
-      {/* Contact */}
-      <section className="py-16 px-4 sm:px-6 text-center bg-[#0f172a]">
-        <h2 className="text-3xl font-bold text-cyan-400 mb-6">
-          Connect With Me
-        </h2>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="flex justify-center flex-wrap gap-6 text-cyan-400"
-        >
-          <a
-            href="https://github.com/binnoodx"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaGithub size={30} />
-          </a>
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaLinkedin size={30} />
-          </a>
-          <a href="mailto:thebinod404@gmail.com">
-            <FaEnvelope size={30} />
-          </a>
-        </motion.div>
-      </section>
+        </section>
 
-      {/* Footer */}
-      <footer className="text-center py-6 text-gray-500 bg-[#0f172a] text-sm px-4">
-        © {new Date().getFullYear()} Binod. All rights reserved.
-      </footer>
+        {/* Resources Section */}
+
+        <section className={showResources ? `gap-5 ${active === 7 ? "z-1" : "z-0"} border-1 w-[90vw] lg:w-[50vw] lg:min-h-[50vh]  h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+          <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
+            <h1 className="text-sm normalFont text-center py-2">
+              Resources By Binod
+            </h1>
+
+            <button onClick={() => setshowResources(false)} className="px-3 cursor-pointer py-1 bg-red-500">X</button>
+
+
+          </div>
+          <div className="h-full flex justify-center items-center">
+
+
+            <h1 className="text-start text-slate-300 px-10 paraFont py-2">Sorry No Resources Available Right Now</h1>
+
+
+
+
+          </div>
+
+        </section>
+
+        {/* Bookie Section */}
+
+        <section className={showBookie ? `gap-5 border-1 ${active === 8 ? "z-1" : "z-0"} w-[90vw] lg:w-auto lg:overflow-hidden overflow-scroll h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+          <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
+            <h1 className="text-sm normalFont text-center py-2">
+              Rookie Bookie Collections
+            </h1>
+
+            <button onClick={() => setshowBookie(false)} className="px-3 cursor-pointer py-1 bg-red-500">X</button>
+
+
+          </div>
+          <div className="booksCollection flex h-full w-full flex-col items-center  ">
+
+            <div className="flex gap-3 flex-row mx-5 my-5">
+
+
+              <div className="onebyone flex flex-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/8/86/Karnali_Blues_by_Buddhisagar.jpg" className="h-32 lg:h-42" alt="" />
+                <h1 className="text-xs">Karnali Blues</h1>
+                <h2 className="text-xs italic">⭐ 9/10</h2>
+              </div>
+              <div className="onebyone flex flex-col">
+                <img src="https://img.drz.lazcdn.com/static/np/p/3b4328af29f327c02b796ef67c2b1dc8.jpg_720x720q80.jpg" className="h-32 lg:h-42" alt="" />
+                <h1 className="text-xs">Aithan</h1>
+                <h2 className="text-xs italic">⭐ 6/10</h2>
+              </div>
+              <div className="onebyone flex flex-col">
+                <img src="https://media.thuprai.com/front_covers/ek-sarko-maya_front.jpg" className="h-32 lg:h-42" alt="" />
+                <h1 className="text-xs">Ek sarko Maya</h1>
+                <h2 className="text-xs italic">⭐ 8/10</h2>
+              </div>
+              <div className="onebyone flex flex-col">
+                <img src="https://static-01.daraz.com.np/p/5e839d6b91f98053bfb8bc2ad1c20859.jpg" className="h-32 lg:h-42" alt="" />
+                <h1 className="text-xs">Radha</h1>
+                <h2 className="text-xs italic">⭐ -/10</h2>
+              </div>
+
+
+
+
+            </div>
+            <div className="flex gap-3 flex-row mx-5 my-2">
+
+
+              <div className="onebyone flex flex-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/d/d9/Summer_Love_%28novel%29.jpg" className="h-32 lg:h-42" alt="" />
+                <h1 className="text-xs">SummerLove</h1>
+                <h2 className="text-xs italic">⭐ 9/10</h2>
+              </div>
+              <div className="onebyone flex flex-col">
+                <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1407659398i/22889351.jpg" className="h-32 lg:h-42" alt="" />
+                <h1 className="text-xs">Saaya</h1>
+                <h2 className="text-xs italic">⭐ 8/10</h2>
+              </div>
+              <div className="onebyone flex flex-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/a/a0/Phirphire_%28novel%29.jpg" className="h-32 lg:h-42" alt="" />
+                <h1 className="text-xs">Firfire</h1>
+                <h2 className="text-xs italic">⭐ -/10</h2>
+              </div>
+              <div className="onebyone flex flex-col">
+                <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1407659398i/22889351.jpg" className="h-32 lg:h-42" alt="" />
+                <h1 className="text-xs">Saaya</h1>
+                <h2 className="text-xs italic">⭐ 8/10</h2>
+              </div>
+
+
+
+
+
+            </div>
+            <div className="flex gap-3 flex-row mx-5 mb-10">
+              <div className="onebyone flex flex-col">
+                <img src="https://upload.wikimedia.org/wikipedia/en/4/47/Seto_Dharti_by_Amar_Neupane.jpg" className="h-32 lg:h-42" alt="" />
+                <h1 className="text-xs">Seto Dharti</h1>
+                <h2 className="text-xs italic">⭐ -/10</h2>
+              </div>
+
+
+              <div className="onebyone flex flex-col">
+
+
+
+                <img src="https://api.bookslandnepal.com/images/9789355434029-7405-1742210004644-1744121898646-1744123176821-1745659240929.jpeg?size=lg" className="h-32 lg:h-42" alt="" />
+                <h1 className="text-xs">Ikagai</h1>
+                <h2 className="text-xs italic">⭐ 8/10</h2>
+              </div>
+              <div className="onebyone flex flex-col">
+                <img src="https://media.thuprai.com/front_covers/psychology-of-money.jpg" className="h-32 lg:h-42" alt="" />
+                <h1 className="text-xs">..</h1>
+                <h2 className="text-xs italic">⭐ 8/10</h2>
+              </div>
+              <div className="onebyone flex flex-col">
+                <img src="https://heritagebooks.com.np/wp-content/uploads/2021/10/The-subtle-art-of-not-giving-fucck.jpg" className="h-32 lg:h-42" alt="" />
+                <h1 className="text-xs">..</h1>
+                <h2 className="text-xs italic">⭐ 7/10</h2>
+              </div>
+
+
+
+
+
+
+            </div>
+
+
+
+
+          </div>
+
+
+
+        </section>
+
+
+
+
+      </div>
+
+
+
+
+
+
     </div>
   );
 }
