@@ -204,7 +204,7 @@ export default function PortfolioPage() {
             chatShow
               ? `chatApp absolute border-1 border-white w-[90vw] lg:w-[40vw] lg:ml-[40vw]
           flex flex-col min-sm:h-[70vh] h-[75vh] lg:h-[75vh] bg-slate-800
-          ${active === 4 ? "z-1" : "z-0"}`
+          ${active === 4 ? "z-1" : "z-0 "}`
               : `chatApp w-[40vw] mr-[20vw] hidden flex-col min-sm:h-[70vh]
           h-[50vh] bg-slate-800`
           }
@@ -285,7 +285,7 @@ export default function PortfolioPage() {
 
         {/* Tech Stack Section */}
 
-        <section id="tech_stack" className={techStackShow ?  `${active === 3 ? "z-1" : "z-0"} gap-5 border-1 w-[90vw] lg:w-auto h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section id="tech_stack" className={techStackShow ?  `${active === 3 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:w-auto h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[44vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               Binod's Tech Stack
@@ -295,39 +295,45 @@ export default function PortfolioPage() {
 
 
           </div>
-          <div className="grid mt-5 px-4 py-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:gap-6 max-w-4xl mx-auto">
-            {[
-              "React",
-              "React Native",
-              "Express Js",
-              "Python",
-              "Next Js",
-              "Expo",
-              "Node Js",
-              "MongoDB",
-              "Socket.IO",
-              "webRTC",
-              "Next-Auth",
-              "REST APIs",
-              "Shadcn",
-              "Tailwind CSS",
-            ].map((tech) => (
-              <motion.div
-                key={tech}
-                whileHover={{ scale: 1.1 }}
-                className="bg-slate-600 mx-2 my-1 rounded-lg py-4 px-2 shadow-md shadow-cyan-400/20"
-              >
-                <p className="lg:text-lg text-sm font-semibold text-white text-center">
-                  {tech}
-                </p>
-              </motion.div>
-            ))}
+          <div className="myTechStack w-[90vw] gap-5 lg:w-auto flex flex-col justify-start items-start py-10 px-5">
+
+            <div className="Framework w-full flex flex-col justify-start items-start">
+              <h1 className="normalFont text-xl">Programming Languages</h1>
+              <h2>Typescript / Javascript (ES6) / Python / C Basics</h2>
+
+            </div>
+            
+            <div className="Frontend w-full flex flex-col  justify-start items-start">
+              <h1 className="normalFont text-xl">Frontend</h1>
+              <h2>React / React Native / Tailwind CSS</h2>
+
+            </div>
+            <div className="Backend w-full flex flex-col justify-start items-start">
+              <h1 className="normalFont text-xl">Backend</h1>
+              <h2>Node Js</h2>
+
+            </div>
+            <div className="Framework w-full flex flex-col justify-start items-start">
+              <h1 className="normalFont text-xl">Framework</h1>
+              <h2>Express JS / Next Js / Expo / Vite</h2>
+
+            </div>
+            <div className="Tools & Platform w-full flex flex-col justify-start items-start">
+              <h1 className="normalFont text-xl">Tools & Platform</h1>
+              <h2>Figma / Postman / Vercel / Git / OAuth / MongoDB / Socket IO</h2>
+
+            </div>
+
+
+
+
+
           </div>
         </section>
 
         {/* About me Section */}
 
-        <section id="about_me" className={showAboutMe ? `${active === 1 ? "z-1" : "z-0"} gap-5 border-1 w-[90vw] lg:w-[50vw] overflow-scroll lg:overflow-hidden  h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section id="about_me" className={showAboutMe ? `${active === 1 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:w-[50vw] overflow-scroll lg:overflow-hidden  h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext fixed lg:relative w-[90vw] lg:w-auto  bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               All about Binod
@@ -337,7 +343,7 @@ export default function PortfolioPage() {
 
 
           </div>
-          <div className="mt-16">
+          <div className="mt-3">
 
 
             <h1 className="text-start text-slate-300 px-10 paraFont py-2">Hello World , This is <br></br><span className="normalFont text-4xl font-extrabold">Binod Sharma</span><br></br> An aspiring and  multidisciplinary Software Developer Engineer from Nepal. Currently, I am pursuing my Bsc. CSIT at Patan Mutliple Campus. I have high urge to build projects that doesn't even make sense. All I do is put all Creativity and Logics for best outcomes. Choosing Programming over other is best thing ever done in my life. <br></br><br></br>Behind Programming I have several hobbies like <br></br>- Competitive Programming<br></br>- Reading Novels and manga<br></br>- Playing Chess<br></br>- Touring in Bike<br></br>- Doing Maths and Physics<br></br>- Listening Music<br></br>- Photography<br></br>- Watching Anime </h1>
@@ -351,7 +357,7 @@ export default function PortfolioPage() {
 
         {/* Images Section */}
 
-        <section className={showImages ? ` ${active === 5 ? "z-1" : "z-0"} gap-5 border-1 w-[90vw] lg:w-[50vw]  h-[75vh]  border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section className={showImages ? ` ${active === 5 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:w-[50vw]  h-[75vh]  border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               Images By Binod
@@ -374,7 +380,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* Projects Section */}
-        <section className={showProjects ? ` ${active === 2 ? "z-1" : "z-0"} bg-slate-700 border-2  border-slate-800 w-[90vw] lg:w-auto h-[75vh] lg:h-auto lg:overflow-hidden overflow-y-scroll    absolute lg:ml-[38vw] flex-col` : " bg-slate-700 border-2 hidden border-slate-800   absolute ml-[38vw] flex-col"}>
+        <section className={showProjects ? ` ${active === 2 ? "z-1" : "z-0 "} bg-slate-700 border-2  border-slate-800 w-[90vw] lg:w-auto h-[75vh] lg:h-auto lg:overflow-hidden overflow-y-scroll    absolute lg:ml-[38vw] flex-col` : " bg-slate-700 border-2 hidden border-slate-800   absolute ml-[38vw] flex-col"}>
           <div className="uppertext  overflow-hidden lg:w-full  w-[90vw] bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center  py-2">
               Binod's Projects
@@ -386,6 +392,13 @@ export default function PortfolioPage() {
           </div>
           <div className="grid  grid-cols-1 py-10 px-8 md:grid-cols-2 gap-6 max-w-5xl mx-auto ">
             {[
+              {
+                title: "Startup",
+                isCompleted: false,
+                description:
+                  "Expected to release on 2026. Contact me for more info.",
+                link: "/"
+              },
               {
                 title: "Authentication",
                 isCompleted: true,
@@ -411,10 +424,10 @@ export default function PortfolioPage() {
               },
               {
                 title: "Productive_Me",
-                isCompleted: false,
+                isCompleted: true,
                 description:
                   "A Full-stack webapp to track your daily todos , journals , goals and make you productive.",
-                link: "https://beatioe.vercel.app",
+                link: "",
               },
               {
                 title: "E-commerce WebApp",
@@ -455,7 +468,7 @@ export default function PortfolioPage() {
 
         {/* Social Handle Section */}
 
-        <section className={showSocialHandles ? ` ${active === 6 ? "z-1" : "z-0"} gap-5 border-1 w-[90vw] lg:max-w-[20vw]   h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section className={showSocialHandles ? ` ${active === 6 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:max-w-[20vw]   h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               Let's Connect
@@ -506,7 +519,7 @@ export default function PortfolioPage() {
 
         {/* Resources Section */}
 
-        <section className={showResources ? `gap-5 ${active === 7 ? "z-1" : "z-0"} border-1 w-[90vw] lg:w-[50vw] lg:min-h-[50vh]  h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section className={showResources ? `gap-5 ${active === 7 ? "z-1" : "z-0 "} border-1 w-[90vw] lg:w-[50vw] lg:min-h-[50vh]  h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               Resources By Binod
@@ -530,7 +543,7 @@ export default function PortfolioPage() {
 
         {/* Bookie Section */}
 
-        <section className={showBookie ? `gap-5 border-1 ${active === 8 ? "z-1" : "z-0"} w-[90vw] lg:w-auto lg:overflow-hidden overflow-scroll h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section className={showBookie ? `gap-5 border-1 ${active === 8 ? "z-1" : "z-0 "} w-[90vw] lg:w-auto lg:overflow-hidden overflow-scroll h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               Rookie Bookie Collections
