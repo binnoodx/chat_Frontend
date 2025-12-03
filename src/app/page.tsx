@@ -107,7 +107,17 @@ export default function PortfolioPage() {
     <div className="  text-white font-sans min-h-screen overflow-x-hidden">
       <ToastContainer />
 
-      <div className="homepage bg-[url('https://r4.wallpaperflare.com/wallpaper/974/565/254/windows-11-windows-10-minimalism-hd-wallpaper-c876bde870303c5820cce16ed8a244ca.jpg')]  w-screen bg-cover flex flex-col-reverse min-sm:flex-row items-center justify-evenly   lg:justify-between     h-[100vh]">
+      <div className="homepage bg-[url('https://r4.wallpaperflare.com/wallpaper/974/565/254/windows-11-windows-10-minimalism-hd-wallpaper-c876bde870303c5820cce16ed8a244ca.jpg')]  w-screen bg-cover flex flex-col min-sm:flex-row-reverse items-center justify-evenly   lg:justify-between     h-[100vh]">
+
+
+      <div className="myDetails flex px-5 relative w-screen lg:w-[80vw]  flex-col-reverse lg:flex-col  lg:mr-[20vw] items-center ">
+          <img className='lg:h-[50vh] h-80 -mt-5  ' src="https://www.pngmart.com/files/23/Inosuke-PNG-Photo.png" alt="" />
+          <h1 className='lg:text-7xl text-4xl font-extrabold   tracking-wide   normalFont'>Binod's Homepage</h1>
+          <h2 className='italic lg:text-lg text-sm normalFont'>React/React Native Full Stack Developer</h2>
+
+
+
+        </div>
 
 
 
@@ -115,16 +125,16 @@ export default function PortfolioPage() {
 
 
 
-        <div className="insideFolders flex lg:flex-col flex-col justify-center lg:justify-start lg:item-start ">
-          <div className="folders lg:mx-10 mx-5 flex flex-row lg:flex-col  gap-5 ">
+        <div className="insideFolders flex lg:flex-col w-screen flex-col items-center justify-evenly lg:justify-start lg:item-start ">
+          <div className="folders  justify-evenly mx-5 lg:mx-10 w-screen flex flex-row lg:flex-col  gap-5 ">
 
 
             <div onClick={() => {
               setActive(1)
               setshowAboutMe(true)
-            }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
+            }} className="insideFolder flex  justify-evenly items-center flex-col cursor-pointer">
               <img src={images.userFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
-              <h1 className="text-sm mt-1 normalFont">About Me</h1>
+              <h1 className="text-xs lg:text-sm text-start mt-1 normalFont">About Me</h1>
             </div>
 
 
@@ -134,7 +144,7 @@ export default function PortfolioPage() {
               setShowProjects(true)
             }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
               <img src={images.projects.src} className="lg:h-16 lg:w-16 h-12" alt="" />
-              <h1 className="text-sm mt-1 normalFont">Projects</h1>
+              <h1 className="text-xs lg:text-sm text-start mt-1 normalFont">Projects</h1>
             </div>
 
 
@@ -143,7 +153,7 @@ export default function PortfolioPage() {
               setTechStackShow(true)
             }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
               <img src={images.techFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
-              <h1 className="text-sm mt-1 normalFont">TechStack</h1>
+              <h1 className="text-xs lg:text-sm text-start mt-1 normalFont">TechStack</h1>
             </div>
 
 
@@ -152,36 +162,38 @@ export default function PortfolioPage() {
               setchatShow(true)
             }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
               <img src={images.chatLogo.src} className="lg:h-16 lg:w-16 h-12" alt="" />
-              <h1 className="text-sm mt-1 normalFont">Chat</h1>
+              <h1 className="text-xs lg:text-sm text-start mt-1 normalFont">Chat</h1>
             </div>
 
+            
+
+
+            
+
+
+
+          </div>
+          <div className="folders w-screen justify-evenly lg:mx-10 mx-5 flex mt-3 flex-row lg:flex-col  gap-5 ">
             <div onClick={() => {
               setActive(7)
               setshowResources(true)
             }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
               <img src={images.DocumentFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
-              <h1 className="text-sm mt-1 normalFont">Resources</h1>
+              <h1 className="text-xs lg:text-sm text-start mt-1 normalFont">Resources</h1>
             </div>
-
-
             <div onClick={() => {
               setActive(5)
               setshowImages(true)
             }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
               <img src={images.imageFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
-              <h1 className="text-sm mt-1 normalFont">Images</h1>
+              <h1 className="text-xs lg:text-sm text-start mt-1 normalFont">Images</h1>
             </div>
-
-
-
-          </div>
-          <div className="folders lg:mx-10 mx-5 flex mt-3 flex-row lg:flex-col  gap-5 ">
             <div onClick={() => {
               setActive(6)
               setshowSocialHandles(true)
             }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
               <img src={images.contactFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
-              <h1 className="text-sm mt-1 normalFont">Social Handles</h1>
+              <h1 className="text-xs lg:text-sm text-start mt-1 normalFont">Social Handles</h1>
             </div>
 
 
@@ -194,23 +206,17 @@ export default function PortfolioPage() {
               setshowBookie(true)
             }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
               <img src={images.bookieFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
-              <h1 className="text-sm mt-1 normalFont">Book Collection</h1>
+              <h1 className="text-xs lg:text-sm text-start mt-1 normalFont">Book Collection</h1>
             </div>
 
 
           </div>
+          
         </div>
 
 
 
-        <div className="myDetails flex px-5 relative  flex-col-reverse lg:flex-col  lg:mr-[20vw] items-center ">
-          <img className='lg:h-[50vh] h-96 -mt-5  ' src="https://www.pngmart.com/files/23/Inosuke-PNG-Photo.png" alt="" />
-          <h1 className='lg:text-7xl text-4xl font-extrabold   tracking-wide   normalFont'>Binod's Homepage</h1>
-          <h2 className='italic lg:text-lg text-sm normalFont'>React/React Native Full Stack Developer</h2>
-
-
-
-        </div>
+        
 
 
         {/* Chat Section */}
@@ -301,7 +307,7 @@ export default function PortfolioPage() {
 
         {/* Tech Stack Section */}
 
-        <section id="tech_stack" className={techStackShow ? `${active === 3 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:w-auto h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[44vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section id="tech_stack" className={techStackShow ? `${active === 3 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:w-auto h-[85vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[44vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               Binod's Tech Stack
@@ -315,28 +321,28 @@ export default function PortfolioPage() {
 
             <div className="Framework w-full flex flex-col justify-start items-start">
               <h1 className="normalFont text-xl">Programming Languages</h1>
-              <h2>Typescript / Javascript (ES6) / Python / C Basics</h2>
+              <h2 className="text-xs lg:text-sm text-start">Typescript / Javascript (ES6) / Python / C Basics</h2>
 
             </div>
 
             <div className="Frontend w-full flex flex-col  justify-start items-start">
               <h1 className="normalFont text-xl">Frontend</h1>
-              <h2>React / React Native / Tailwind CSS</h2>
+              <h2 className="text-xs lg:text-sm text-start">React / React Native / Tailwind CSS</h2>
 
             </div>
             <div className="Backend w-full flex flex-col justify-start items-start">
               <h1 className="normalFont text-xl">Backend</h1>
-              <h2>Node Js</h2>
+              <h2 className="text-xs lg:text-sm text-start">Node Js</h2>
 
             </div>
             <div className="Framework w-full flex flex-col justify-start items-start">
               <h1 className="normalFont text-xl">Framework</h1>
-              <h2>Express JS / Next Js / Expo / Vite</h2>
+              <h2 className="text-xs lg:text-sm text-start">Express JS / Next Js / Expo / Vite</h2>
 
             </div>
             <div className="Tools & Platform w-full flex flex-col justify-start items-start">
               <h1 className="normalFont text-xl">Tools & Platform</h1>
-              <h2>Figma / Postman / Vercel / Git / OAuth / MongoDB / Socket IO</h2>
+              <h2 className="text-xs lg:text-sm text-start">Figma / Postman / Vercel / Git / OAuth / MongoDB <br/> Socket IO / AWS</h2>
 
             </div>
 
@@ -349,7 +355,7 @@ export default function PortfolioPage() {
 
         {/* About me Section */}
 
-        <section id="about_me" className={showAboutMe ? `${active === 1 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:w-[50vw] overflow-scroll lg:overflow-hidden  h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section id="about_me" className={showAboutMe ? `${active === 1 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:w-[50vw] overflow-scroll lg:overflow-hidden overflow-x-hidden  h-[90vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-10 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext  lg:relative w-[90vw] lg:w-auto  bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               All about Binod
@@ -396,7 +402,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* Projects Section */}
-        <section className={showProjects ? ` ${active === 2 ? "z-1" : "z-0 "} bg-slate-700 border-2  border-slate-800 w-[90vw] lg:w-auto h-[75vh] lg:h-auto lg:overflow-hidden overflow-y-scroll absolute lg:ml-[38vw] flex-col` : " bg-slate-700 border-2 hidden border-slate-800   absolute ml-[38vw] flex-col"}>
+        <section className={showProjects ? ` ${active === 2 ? "z-1" : "z-0 "} bg-slate-700 border-2  border-slate-800 w-[90vw] lg:w-auto h-[90vh] lg:h-auto lg:overflow-hidden overflow-y-scroll overflow-x-hidden absolute lg:ml-[38vw] flex-col` : " bg-slate-700 border-2 hidden border-slate-800   absolute ml-[38vw] flex-col"}>
           <div className="uppertext  overflow-hidden lg:w-full  w-[90vw] bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center  py-2">
               Binod's Projects
@@ -484,7 +490,7 @@ export default function PortfolioPage() {
 
         {/* Social Handle Section */}
 
-        <section className={showSocialHandles ? ` ${active === 6 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:max-w-[20vw]   h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section className={showSocialHandles ? ` ${active === 6 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:max-w-[20vw]   h-[85vh] lg:h-auto border-white absolute bg-slate-600 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-600 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               Let's Connect
@@ -539,7 +545,7 @@ export default function PortfolioPage() {
 
         {/* Resources Section */}
 
-        <section className={showResources ? `gap-5 ${active === 7 ? "z-1" : "z-0 "} border-1 w-[90vw] lg:w-[50vw] lg:min-h-[80vh]  h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section className={showResources ? `gap-5 ${active === 7 ? "z-1" : "z-0 "} border-1 w-[90vw] lg:w-[50vw] lg:min-h-[80vh]  h-[95vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               Resources By Binod
@@ -549,10 +555,10 @@ export default function PortfolioPage() {
 
 
           </div>
-          <div className="space-y-5 w-[45vw] mx-10 my-2">
+          <div className="space-y-5 lg:w-[45vw]  lg:mx-10 mx-2 my-2">
             <details className="group [&amp;_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer items-center justify-between gap-4 border-2 border-black bg-white px-4 py-3 font-medium text-gray-900 shadow-[4px_4px_0_0] hover:bg-yellow-100 focus:bg-yellow-100 focus:outline-0">
-                <span className="font-semibold">Learn Web Development</span>
+                <span className="font-semibold text-xs lg:text-md">Learn Web Development</span>
 
                 <svg className="size-5 shrink-0 group-open:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
@@ -567,26 +573,26 @@ export default function PortfolioPage() {
                   <div className="p-4 flex flex-row gap-3 justify-start item-start">
 
                     <Link href="https://youtube.com/playlist?list=PLu0W_9lII9agq5TrH9XLIKQvv0iaF2X3w&si=y32HHCcRYFuaKSmA" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
-                      <img src="https://i.ytimg.com/vi/tVzUXW6siu0/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCKktmHuXV_macV6MoUwhKxwzXJ7w" className="h-27 w-48" alt="" />
-                      <p className="text-sm">🔗 Learn Full Stack Web Dev</p>
+                      <img src="https://i.ytimg.com/vi/tVzUXW6siu0/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCKktmHuXV_macV6MoUwhKxwzXJ7w" className="lg:h-27 lg:w-48 h-9 w-16" alt="Link" />
+                      <p className=" text-xs lg:text-sm">🔗 Learn Full Stack Web Dev</p>
 
 
                     </Link>
                     <Link href="https://youtube.com/playlist?list=PLu71SKxNbfoCXO80Z4miZHTL5GxfFbz7A&si=nMAy8Eaw9kY2MqxE" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
-                      <img src="https://i.ytimg.com/vi/3BEn2E9PvBM/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLATU7lpzVG7UM6sIVJ0EP-vZcRzJw" className="h-27 w-48" alt="" />
-                      <p className="text-sm">🔗 Learn Web Authentication</p>
+                      <img src="https://i.ytimg.com/vi/3BEn2E9PvBM/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLATU7lpzVG7UM6sIVJ0EP-vZcRzJw" className="lg:h-27 lg:w-48 h-9 w-16" alt="Link" />
+                      <p className=" text-xs lg:text-sm">🔗 Learn Web Authentication</p>
 
 
                     </Link>
                     <Link href="https://youtube.com/playlist?list=PLt5mNkGuWcuWbFcwT8V5a_BpLVa1AVXD4&si=LUAHVcsFs2ye-G0e" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
-                      <img src="https://i.ytimg.com/vi/cr1XaYBqlhs/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAzi5fJY8_J6KlN6eX3cabuxOcjcw" className="h-27 w-48" alt="" />
-                      <p className="text-sm">🔗 Learn Chat App with Socket IO</p>
+                      <img src="https://i.ytimg.com/vi/cr1XaYBqlhs/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAzi5fJY8_J6KlN6eX3cabuxOcjcw" className="lg:h-27 lg:w-48 h-9 w-16" alt="Link" />
+                      <p className=" text-xs lg:text-sm">🔗 Learn Chat App with Socket IO</p>
 
 
                     </Link>
                     <Link href="https://youtu.be/q8EevlEpQ2A?si=q6zM0VztZJuQ8KYB" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
-                      <img src="https://i.ytimg.com/vi/q8EevlEpQ2A/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLA3wvZ2tf440prOd9AGo4PhiRVUqw" className="h-27 w-48" alt="" />
-                      <p className="text-sm">🔗 Learn Git and Github</p>
+                      <img src="https://i.ytimg.com/vi/q8EevlEpQ2A/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLA3wvZ2tf440prOd9AGo4PhiRVUqw" className="lg:h-27 lg:w-48 h-9 w-16" alt="Link" />
+                      <p className=" text-xs lg:text-sm">🔗 Learn Git and Github</p>
 
 
                     </Link>
@@ -599,26 +605,26 @@ export default function PortfolioPage() {
                     <div className="p-4 flex flex-row gap-3 justify-start item-start">
 
                       <Link href="https://youtube.com/playlist?list=PLUcsbZa0qzu0gVRFlVfscqjD84TqMssOt&si=8-nnHuR2oyGe0KZH" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
-                        <img src="https://i.ytimg.com/pl_c/PLUcsbZa0qzu0gVRFlVfscqjD84TqMssOt/studio_square_thumbnail.jpg?sqp=CO6-v8kG-oaymwEICIAKENAFSFqi85f_AwYI3tvCwwY=&rs=AOn4CLAFl81pPQrL9aIcPNky4u65HLdXOw" className="h-27 w-48" alt="" />
-                        <p className="text-sm">🔗 Learn Java Spring Bootv</p>
+                        <img src="https://i.ytimg.com/pl_c/PLUcsbZa0qzu0gVRFlVfscqjD84TqMssOt/studio_square_thumbnail.jpg?sqp=CO6-v8kG-oaymwEICIAKENAFSFqi85f_AwYI3tvCwwY=&rs=AOn4CLAFl81pPQrL9aIcPNky4u65HLdXOw" className="lg:h-27 lg:w-48 h-9 w-16" alt="Link" />
+                        <p className=" text-xs lg:text-sm">🔗 Learn Java Spring Bootv</p>
 
 
                       </Link>
                       <Link href="https://youtu.be/ig26iRcMavQ?si=ohYLpvSPcI1N4bOT" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
-                        <img src="https://i.ytimg.com/vi/ArmPzvHTcfQ/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLA8QseBspGKnXKVkc9vS1fQ-yoqwA" className="h-27 w-48" alt="" />
-                        <p className="text-sm">🔗 Advance Web Project</p>
+                        <img src="https://i.ytimg.com/vi/ArmPzvHTcfQ/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLA8QseBspGKnXKVkc9vS1fQ-yoqwA" className="lg:h-27 lg:w-48 h-9 w-16" alt="Link" />
+                        <p className=" text-xs lg:text-sm">🔗 Advance Web Project</p>
 
 
                       </Link>
                       <Link href="https://youtube.com/playlist?list=PLjiHFwhbHYlEmPhn68XdG2p2k4X47XR-8&si=BE7IFajYHK1bl7yQ" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
-                        <img src="https://i.ytimg.com/vi/BOt3MNB71gI/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAMChmO3IQL0gfGfqQMQmD3Op08CQ" className="h-27 w-48" alt="" />
-                        <p className="text-sm">🔗 Learn UI/UX Design</p>
+                        <img src="https://i.ytimg.com/vi/BOt3MNB71gI/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAMChmO3IQL0gfGfqQMQmD3Op08CQ" className="lg:h-27 lg:w-48 h-9 w-16" alt="Link" />
+                        <p className=" text-xs lg:text-sm">🔗 Learn UI/UX Design</p>
 
 
                       </Link>
                       <Link href="https://youtu.be/JmpDGMgRFfo?si=jyVamlLdNkMkOBzF" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
-                        <img src="https://i.ytimg.com/vi/JmpDGMgRFfo/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDFP-6Og6xq9IfPPD4UquzR8w62OQ" className="h-27 w-48" alt="" />
-                        <p className="text-sm">🔗 Advance Backend Project</p>
+                        <img src="https://i.ytimg.com/vi/JmpDGMgRFfo/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDFP-6Og6xq9IfPPD4UquzR8w62OQ" className="lg:h-27 lg:w-48 h-9 w-16" alt="Link" />
+                        <p className=" text-xs lg:text-sm">🔗 Advance Backend Project</p>
 
 
                       </Link>
@@ -637,7 +643,7 @@ export default function PortfolioPage() {
 
             <details className="group [&amp;_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer items-center justify-between gap-4 border-2 border-black bg-white px-4 py-3 font-medium text-gray-900 shadow-[4px_4px_0_0] hover:bg-yellow-100 focus:bg-yellow-100 focus:outline-0">
-                <span className="font-semibold">Learn App Development (React Native)</span>
+                <span className="font-semibold text-xs lg:text-md">Learn App Development (React Native)</span>
 
                 <svg className="size-5 shrink-0 group-open:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
@@ -647,8 +653,8 @@ export default function PortfolioPage() {
               <div className="p-4 flex flex-row gap-3 justify-start item-start">
 
                 <Link href="https://youtu.be/CzJQEstIiEI?si=AI86ghQYsssVHDNw" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
-                  <img src="https://i.ytimg.com/vi/ZBCUegTZF7M/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBf4c4C8CtzjjIRjTxeTVBydv4p7Q" className="h-27 w-48" alt="" />
-                  <p className="text-sm">🔗 Learn React Native</p>
+                  <img src="https://i.ytimg.com/vi/ZBCUegTZF7M/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBf4c4C8CtzjjIRjTxeTVBydv4p7Q" className="lg:h-27 lg:w-48 h-9 w-16" alt="Link" />
+                  <p className=" text-xs lg:text-sm">🔗 Learn React Native</p>
 
 
                 </Link>
@@ -661,7 +667,7 @@ export default function PortfolioPage() {
 
             <details className="group [&amp;_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer items-center justify-between gap-4 border-2 border-black bg-white px-4 py-3 font-medium text-gray-900 shadow-[4px_4px_0_0] hover:bg-yellow-100 focus:bg-yellow-100 focus:outline-0">
-                <span className="font-semibold">Learn Python</span>
+                <span className="font-semibold text-xs lg:text-md">Learn Python</span>
 
                 <svg className="size-5 shrink-0 group-open:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
@@ -671,16 +677,14 @@ export default function PortfolioPage() {
               <div className="p-4 flex flex-row gap-3 justify-start item-start">
 
                 <Link href="https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg&si=v2yF1Y-QylPBza0c" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
-                  <img src="https://i.ytimg.com/vi/7wnove7K-ZQ/hqdefault.jpg?sqp=-oaymwEXCOADEI4CSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDMirEJX-r2pxI5nylJWpyclDDEcg" className="h-27 w-48" alt="" />
-                  <p className="text-sm">🔗 Learn Basics of Python</p>
+                  <img src="https://i.ytimg.com/vi/7wnove7K-ZQ/hqdefault.jpg?sqp=-oaymwEXCOADEI4CSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDMirEJX-r2pxI5nylJWpyclDDEcg" className="lg:h-27 lg:w-48 h-9 w-16" alt="Link" />
+                  <p className=" text-xs lg:text-sm">🔗 Learn Basics of Python</p>
 
 
                 </Link>
 
 
-                {/* <a href="https://youtube.com/playlist?list=PLu0W_9lII9agq5TrH9XLIKQvv0iaF2X3w&si=JEWbUXmLUurJZrDq"> 🔗 Learn Web Development from Scratch by Code With Harry</a>
-                    <a href="https://youtube.com/playlist?list=PLu71SKxNbfoCXO80Z4miZHTL5GxfFbz7A&si=cqHeng9K2_w1QPKc"> 🔗 Learn Web Authentication by ChaiAurCode</a>
-                    <a href="https://youtube.com/playlist?list=PLt5mNkGuWcuWbFcwT8V5a_BpLVa1AVXD4&si=1KzV4-wj2-OMBe0k"> 🔗 Learn Chat App with Socket IO by 6PackProgrammer</a> */}
+                
 
 
               </div>
@@ -691,7 +695,7 @@ export default function PortfolioPage() {
 
         {/* Bookie Section */}
 
-        <section className={showBookie ? `gap-5 border-1 ${active === 8 ? "z-1" : "z-0 "} w-[90vw] lg:w-auto lg:overflow-hidden overflow-scroll h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section className={showBookie ? `gap-5 border-1 ${active === 8 ? "z-1" : "z-0 "} w-[90vw] lg:w-auto lg:overflow-hidden overflow-scroll h-[85vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               Rookie Bookie Collections
@@ -787,32 +791,10 @@ export default function PortfolioPage() {
                 <h2 className="text-sm italic">⭐ 7/10</h2>
               </div>
 
-
-
-
-
-
             </div>
-
-
-
-
           </div>
-
-
-
         </section>
-
-
-
-
       </div>
-
-
-
-
-
-
     </div>
   );
 }
