@@ -107,10 +107,10 @@ export default function PortfolioPage() {
     <div className="  text-white font-sans min-h-screen overflow-x-hidden">
       <ToastContainer />
 
-      <div className="homepage bg-[url('https://r4.wallpaperflare.com/wallpaper/974/565/254/windows-11-windows-10-minimalism-hd-wallpaper-c876bde870303c5820cce16ed8a244ca.jpg')]  w-screen bg-cover flex flex-col min-sm:flex-row-reverse items-center justify-evenly   lg:justify-between     h-[100vh]">
+      <div className="homepage bg-[url('https://r4.wallpaperflare.com/wallpaper/974/565/254/windows-11-windows-10-minimalism-hd-wallpaper-c876bde870303c5820cce16ed8a244ca.jpg')]  w-screen bg-cover flex flex-col lg:flex-row-reverse items-center justify-evenly lg:justify-between h-[100vh]">
 
 
-      <div className="myDetails flex px-5 relative w-screen lg:w-[80vw]  flex-col-reverse lg:flex-col  lg:mr-[20vw] items-center ">
+      <div className="myDetails flex px-5 relative w-screen lg:w-[80vw]  flex-col-reverse lg:flex-col   items-center ">
           <img className='lg:h-[50vh] h-80 -mt-5  ' src="https://www.pngmart.com/files/23/Inosuke-PNG-Photo.png" alt="" />
           <h1 className='lg:text-7xl text-4xl font-extrabold   tracking-wide   normalFont'>Binod's Homepage</h1>
           <h2 className='italic lg:text-lg text-sm normalFont'>React/React Native Full Stack Developer</h2>
@@ -125,7 +125,7 @@ export default function PortfolioPage() {
 
 
 
-        <div className="insideFolders flex lg:flex-col w-screen flex-col items-center justify-evenly lg:justify-start lg:item-start ">
+        <div className="insideFolders flex lg:flex-col  w-[10vw] flex-col items-center justify-evenly lg:justify-start lg:item-start ">
           <div className="folders  justify-evenly mx-5 lg:mx-10 w-screen flex flex-row lg:flex-col  gap-5 ">
 
 
@@ -307,7 +307,7 @@ export default function PortfolioPage() {
 
         {/* Tech Stack Section */}
 
-        <section id="tech_stack" className={techStackShow ? `${active === 3 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:w-auto h-[85vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[44vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section id="tech_stack" className={techStackShow ? `${active === 3 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:w-auto h-[85vh] lg:h-auto border-white absolute bg-slate-800 lg:mr-[24vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               Binod's Tech Stack
@@ -355,7 +355,7 @@ export default function PortfolioPage() {
 
         {/* About me Section */}
 
-        <section id="about_me" className={showAboutMe ? `${active === 1 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:w-[50vw] overflow-scroll lg:overflow-hidden overflow-x-hidden  h-[90vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-10 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section id="about_me" className={showAboutMe ? `${active === 1 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:w-[50vw] overflow-scroll lg:overflow-hidden overflow-x-hidden  h-[90vh] lg:h-auto border-white absolute bg-slate-800 lg:mr-[22vw]  text-center` : "py-10 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext  lg:relative w-[90vw] lg:w-auto  bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               All about Binod
@@ -379,7 +379,7 @@ export default function PortfolioPage() {
 
         {/* Images Section */}
 
-        <section className={showImages ? ` ${active === 5 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:w-[50vw]  h-[75vh]  border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section className={showImages ? ` ${active === 5 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:w-[50vw]  h-[75vh]  border-white absolute bg-slate-800 lg:mr-[20vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               Images By Binod
@@ -402,7 +402,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* Projects Section */}
-        <section className={showProjects ? ` ${active === 2 ? "z-1" : "z-0 "} bg-slate-700 border-2  border-slate-800 w-[90vw] lg:w-auto h-[90vh] lg:h-auto lg:overflow-hidden overflow-y-scroll overflow-x-hidden absolute lg:ml-[38vw] flex-col` : " bg-slate-700 border-2 hidden border-slate-800   absolute ml-[38vw] flex-col"}>
+        <section className={showProjects ? ` ${active === 2 ? "z-1" : "z-0 "} bg-slate-700 border-2  border-slate-800 w-[90vw] lg:w-auto h-[90vh] lg:h-auto lg:overflow-hidden overflow-y-scroll overflow-x-hidden absolute lg:mr-[21vw] flex-col` : " bg-slate-700 border-2 hidden border-slate-800   absolute ml-[38vw] flex-col"}>
           <div className="uppertext  overflow-hidden lg:w-full  w-[90vw] bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center  py-2">
               Binod's Projects
@@ -490,7 +490,7 @@ export default function PortfolioPage() {
 
         {/* Social Handle Section */}
 
-        <section className={showSocialHandles ? ` ${active === 6 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:max-w-[20vw]   h-[85vh] lg:h-auto border-white absolute bg-slate-600 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-600 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section className={showSocialHandles ? ` ${active === 6 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:max-w-[20vw]   h-[85vh] lg:h-auto border-white absolute bg-slate-600 lg:mr-[24vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-600 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               Let's Connect
@@ -545,7 +545,7 @@ export default function PortfolioPage() {
 
         {/* Resources Section */}
 
-        <section className={showResources ? `gap-5 ${active === 7 ? "z-1" : "z-0 "} border-1 w-[90vw] lg:w-[50vw] lg:min-h-[80vh]  h-[95vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section className={showResources ? `gap-5 ${active === 7 ? "z-1" : "z-0 "} border-1 w-[90vw] lg:w-[50vw] lg:min-h-[80vh]  h-[95vh] lg:h-auto border-white absolute bg-slate-800 lg:mr-[19vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               Resources By Binod
@@ -695,7 +695,7 @@ export default function PortfolioPage() {
 
         {/* Bookie Section */}
 
-        <section className={showBookie ? `gap-5 border-1 ${active === 8 ? "z-1" : "z-0 "} w-[90vw] lg:w-auto lg:overflow-hidden overflow-scroll h-[85vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section className={showBookie ? `gap-5 border-1 ${active === 8 ? "z-1" : "z-0 "} w-[90vw] lg:w-auto lg:overflow-hidden overflow-scroll h-[85vh] lg:h-auto border-white absolute bg-slate-800 lg:mr-[23vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               Rookie Bookie Collections
