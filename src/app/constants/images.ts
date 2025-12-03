@@ -15,6 +15,8 @@ import twitter from "@/app/assets/twitter.png"
 import youtube from "@/app/assets/youtube.png"
 import bookieFolder from "@/app/assets/bookieFolder.png"
 import tiktok from "@/app/assets/tiktok.png"
+import pinterest from "@/app/assets/pinterest.png"
+
 
 
 
@@ -40,5 +42,6 @@ export const images = {
     twitter,
     github,
     youtube,
-    tiktok
+    tiktok,
+    pinterest
 }

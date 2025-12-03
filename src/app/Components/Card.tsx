@@ -62,14 +62,7 @@ const SpotlightCard: React.FC<SpotlightCardProps> = ({
         
       />
 
-        <div className="myDetails flex px-5 relative  flex-col justify-start items-center ">
-          <img className='lg:h-[70vh] h-96 -mt-5  absolute' src={images.Zenitshu.src} alt="" />
-            <h1 className='lg:text-7xl text-4xl font-extrabold   tracking-wide   normalFont'>Binod's Homepage</h1>
-            <h2 className='italic lg:text-lg text-sm normalFont'>React/React Native Full Stack Developer</h2>
-            
-            
-
-        </div>
+        
 
 
 

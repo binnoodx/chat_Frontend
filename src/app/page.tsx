@@ -55,6 +55,11 @@ export default function PortfolioPage() {
     setIsDataLoading(false);
     setChat(response);
   };
+  const handleKeyDown = (e: any) => {
+    if (e.key === "Enter") {
+      handleclick();
+    }
+  };
 
   const handleclick = async () => {
     const User = inpRefName.current ? inpRefName.current.value : "";
@@ -102,7 +107,10 @@ export default function PortfolioPage() {
     <div className="  text-white font-sans min-h-screen overflow-x-hidden">
       <ToastContainer />
 
-      <div className="homepage bg-[url('https://r4.wallpaperflare.com/wallpaper/974/565/254/windows-11-windows-10-minimalism-hd-wallpaper-c876bde870303c5820cce16ed8a244ca.jpg')]  w-screen bg-cover flex flex-col-reverse min-sm:flex-row items-center justify-end py-10  lg:justify-between     h-[100vh]">
+      <div className="homepage bg-[url('https://r4.wallpaperflare.com/wallpaper/974/565/254/windows-11-windows-10-minimalism-hd-wallpaper-c876bde870303c5820cce16ed8a244ca.jpg')]  w-screen bg-cover flex flex-col-reverse min-sm:flex-row items-center justify-evenly   lg:justify-between     h-[100vh]">
+
+
+
 
 
 
@@ -116,7 +124,7 @@ export default function PortfolioPage() {
               setshowAboutMe(true)
             }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
               <img src={images.userFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
-              <h1 className="text-xs mt-1 normalFont">About Me</h1>
+              <h1 className="text-sm mt-1 normalFont">About Me</h1>
             </div>
 
 
@@ -126,7 +134,7 @@ export default function PortfolioPage() {
               setShowProjects(true)
             }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
               <img src={images.projects.src} className="lg:h-16 lg:w-16 h-12" alt="" />
-              <h1 className="text-xs mt-1 normalFont">Projects</h1>
+              <h1 className="text-sm mt-1 normalFont">Projects</h1>
             </div>
 
 
@@ -135,7 +143,7 @@ export default function PortfolioPage() {
               setTechStackShow(true)
             }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
               <img src={images.techFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
-              <h1 className="text-xs mt-1 normalFont">TechStack</h1>
+              <h1 className="text-sm mt-1 normalFont">TechStack</h1>
             </div>
 
 
@@ -144,7 +152,15 @@ export default function PortfolioPage() {
               setchatShow(true)
             }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
               <img src={images.chatLogo.src} className="lg:h-16 lg:w-16 h-12" alt="" />
-              <h1 className="text-xs mt-1 normalFont">Chat</h1>
+              <h1 className="text-sm mt-1 normalFont">Chat</h1>
+            </div>
+
+            <div onClick={() => {
+              setActive(7)
+              setshowResources(true)
+            }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
+              <img src={images.DocumentFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
+              <h1 className="text-sm mt-1 normalFont">Resources</h1>
             </div>
 
 
@@ -153,7 +169,7 @@ export default function PortfolioPage() {
               setshowImages(true)
             }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
               <img src={images.imageFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
-              <h1 className="text-xs mt-1 normalFont">Images</h1>
+              <h1 className="text-sm mt-1 normalFont">Images</h1>
             </div>
 
 
@@ -165,18 +181,12 @@ export default function PortfolioPage() {
               setshowSocialHandles(true)
             }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
               <img src={images.contactFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
-              <h1 className="text-xs mt-1 normalFont">Social Handles</h1>
+              <h1 className="text-sm mt-1 normalFont">Social Handles</h1>
             </div>
 
 
 
-            <div onClick={() => {
-              setActive(7)
-              setshowResources(true)
-            }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
-              <img src={images.DocumentFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
-              <h1 className="text-xs mt-1 normalFont">Resources</h1>
-            </div>
+            
 
 
             <div onClick={() => {
@@ -184,7 +194,7 @@ export default function PortfolioPage() {
               setshowBookie(true)
             }} className="insideFolder flex justify-center items-center flex-col cursor-pointer">
               <img src={images.bookieFolder.src} className="lg:h-16 lg:w-16 h-12" alt="" />
-              <h1 className="text-xs mt-1 normalFont">Book Collection</h1>
+              <h1 className="text-sm mt-1 normalFont">Book Collection</h1>
             </div>
 
 
@@ -193,8 +203,13 @@ export default function PortfolioPage() {
 
 
 
-        <div className="cardSection lg:mr-[30vw]">
-          <SpotlightCard />
+        <div className="myDetails flex px-5 relative  flex-col-reverse lg:flex-col  lg:mr-[20vw] items-center ">
+          <img className='lg:h-[50vh] h-96 -mt-5  ' src="https://www.pngmart.com/files/23/Inosuke-PNG-Photo.png" alt="" />
+          <h1 className='lg:text-7xl text-4xl font-extrabold   tracking-wide   normalFont'>Binod's Homepage</h1>
+          <h2 className='italic lg:text-lg text-sm normalFont'>React/React Native Full Stack Developer</h2>
+
+
+
         </div>
 
 
@@ -221,7 +236,7 @@ export default function PortfolioPage() {
 
           <div
             ref={chatBoxRef}
-            className="flex-1 overflow-y-auto px-4 py-2 text-white"
+            className="flex-1 overflow-y-auto  px-4 py-2 text-white"
             style={{ scrollbarWidth: "none" }}
           >
             {IsDataLoading ? (
@@ -268,6 +283,7 @@ export default function PortfolioPage() {
             />
             <input
               ref={inpRefMsg}
+              onKeyDown={handleKeyDown}
               onChange={(e) => setMessage(e.target.value)}
               className="w-[50vw] min-sm:w-[17vw] bg-slate-600 px-4 text-white"
               type="text"
@@ -285,7 +301,7 @@ export default function PortfolioPage() {
 
         {/* Tech Stack Section */}
 
-        <section id="tech_stack" className={techStackShow ?  `${active === 3 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:w-auto h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[44vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section id="tech_stack" className={techStackShow ? `${active === 3 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:w-auto h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[44vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               Binod's Tech Stack
@@ -302,7 +318,7 @@ export default function PortfolioPage() {
               <h2>Typescript / Javascript (ES6) / Python / C Basics</h2>
 
             </div>
-            
+
             <div className="Frontend w-full flex flex-col  justify-start items-start">
               <h1 className="normalFont text-xl">Frontend</h1>
               <h2>React / React Native / Tailwind CSS</h2>
@@ -334,7 +350,7 @@ export default function PortfolioPage() {
         {/* About me Section */}
 
         <section id="about_me" className={showAboutMe ? `${active === 1 ? "z-1" : "z-0 "} gap-5 border-1 w-[90vw] lg:w-[50vw] overflow-scroll lg:overflow-hidden  h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
-          <div className="uppertext fixed lg:relative w-[90vw] lg:w-auto  bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
+          <div className="uppertext  lg:relative w-[90vw] lg:w-auto  bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               All about Binod
             </h1>
@@ -346,7 +362,7 @@ export default function PortfolioPage() {
           <div className="mt-3">
 
 
-            <h1 className="text-start text-slate-300 px-10 paraFont py-2">Hello World , This is <br></br><span className="normalFont text-4xl font-extrabold">Binod Sharma</span><br></br> An aspiring and  multidisciplinary Software Developer Engineer from Nepal. Currently, I am pursuing my Bsc. CSIT at Patan Mutliple Campus. I have high urge to build projects that doesn't even make sense. All I do is put all Creativity and Logics for best outcomes. Choosing Programming over other is best thing ever done in my life. <br></br><br></br>Behind Programming I have several hobbies like <br></br>- Competitive Programming<br></br>- Reading Novels and manga<br></br>- Playing Chess<br></br>- Touring in Bike<br></br>- Doing Maths and Physics<br></br>- Listening Music<br></br>- Photography<br></br>- Watching Anime </h1>
+            <h1 className="text-start text-slate-300 px-10 paraFont py-2">Hello World , This is <br></br><span className="normalFont text-4xl font-extrabold">Binod Sharma</span><br></br> An aspiring and  multidisciplinary Software Developer Engineer from Nepal. Currently, I am pursuing my Bsc. CSIT at Patan Mutliple Campus. I have high urge to build projects that doesn't even make sense. All I do is put all Creativity and Logics for best outcomes.<br></br><br></br>Behind Programming I have several hobbies like <br></br>- Competitive Programming<br></br>- Reading Novels and manga<br></br>- Playing Chess<br></br>- Touring in Bike<br></br>- Doing Maths and Physics<br></br>- Listening Music<br></br>- Photography<br></br>- Watching Anime </h1>
 
 
 
@@ -380,7 +396,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* Projects Section */}
-        <section className={showProjects ? ` ${active === 2 ? "z-1" : "z-0 "} bg-slate-700 border-2  border-slate-800 w-[90vw] lg:w-auto h-[75vh] lg:h-auto lg:overflow-hidden overflow-y-scroll    absolute lg:ml-[38vw] flex-col` : " bg-slate-700 border-2 hidden border-slate-800   absolute ml-[38vw] flex-col"}>
+        <section className={showProjects ? ` ${active === 2 ? "z-1" : "z-0 "} bg-slate-700 border-2  border-slate-800 w-[90vw] lg:w-auto h-[75vh] lg:h-auto lg:overflow-hidden overflow-y-scroll absolute lg:ml-[38vw] flex-col` : " bg-slate-700 border-2 hidden border-slate-800   absolute ml-[38vw] flex-col"}>
           <div className="uppertext  overflow-hidden lg:w-full  w-[90vw] bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center  py-2">
               Binod's Projects
@@ -460,7 +476,7 @@ export default function PortfolioPage() {
                     </div>
                   )}
                 </h3>
-                <p className="text-gray-300 text-xs lg:text-sm">{project.description}</p>
+                <p className="text-gray-300 text-sm lg:text-sm">{project.description}</p>
               </motion.div>
             ))}
           </div>
@@ -489,7 +505,7 @@ export default function PortfolioPage() {
               <img src={images.instagram.src} className="h-10" alt="" />
               <h1 className="paraFont"> /the_binodd </h1>
             </Link>
-            <Link target="_blank" href={"www.linkedin.com/in/binoddsharma"} className="oneByone flex flex-row items-center mx-5 my-2 gap-3">
+            <Link target="_blank" href={"https://www.linkedin.com/in/binoddsharma"} className="oneByone flex flex-row items-center mx-5 my-2 gap-3">
               <img src={images.linkedin.src} className="h-10" alt="" />
               <h1 className="paraFont"> /Binod Sharma </h1>
             </Link>
@@ -509,6 +525,10 @@ export default function PortfolioPage() {
               <img src={images.tiktok.src} className="h-10" alt="" />
               <h1 className="paraFont"> /binodx_ </h1>
             </Link>
+            <Link target="_blank" href={"https://www.pinterest.com/thebinodd/_"} className="oneByone flex flex-row items-center mx-5 my-2 gap-3">
+              <img src={images.pinterest.src} className="h-10" alt="" />
+              <h1 className="paraFont"> /the_binod </h1>
+            </Link>
 
 
 
@@ -519,7 +539,7 @@ export default function PortfolioPage() {
 
         {/* Resources Section */}
 
-        <section className={showResources ? `gap-5 ${active === 7 ? "z-1" : "z-0 "} border-1 w-[90vw] lg:w-[50vw] lg:min-h-[50vh]  h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
+        <section className={showResources ? `gap-5 ${active === 7 ? "z-1" : "z-0 "} border-1 w-[90vw] lg:w-[50vw] lg:min-h-[80vh]  h-[75vh] lg:h-auto border-white absolute bg-slate-800 lg:ml-[42vw]  text-center` : "py-16 hidden border-1 border-white absolute bg-slate-800 ml-[40vw] px-4 sm:px-6 text-center"}>
           <div className="uppertext bg-slate-300 text-black flex flex-row justify-between px-10 py-1   items-center">
             <h1 className="text-sm normalFont text-center py-2">
               Resources By Binod
@@ -529,14 +549,142 @@ export default function PortfolioPage() {
 
 
           </div>
-          <div className="h-full flex justify-center items-center">
+          <div className="space-y-5 w-[45vw] mx-10 my-2">
+            <details className="group [&amp;_summary::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer items-center justify-between gap-4 border-2 border-black bg-white px-4 py-3 font-medium text-gray-900 shadow-[4px_4px_0_0] hover:bg-yellow-100 focus:bg-yellow-100 focus:outline-0">
+                <span className="font-semibold">Learn Web Development</span>
+
+                <svg className="size-5 shrink-0 group-open:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
 
 
-            <h1 className="text-start text-slate-300 px-10 paraFont py-2">Sorry No Resources Available Right Now</h1>
+              <div className="webResources flex flex-col">
+
+
+                <div className="firstRow">
+                  <div className="p-4 flex flex-row gap-3 justify-start item-start">
+
+                    <Link href="https://youtube.com/playlist?list=PLu0W_9lII9agq5TrH9XLIKQvv0iaF2X3w&si=y32HHCcRYFuaKSmA" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
+                      <img src="https://i.ytimg.com/vi/tVzUXW6siu0/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCKktmHuXV_macV6MoUwhKxwzXJ7w" className="h-27 w-48" alt="" />
+                      <p className="text-sm">🔗 Learn Full Stack Web Dev</p>
+
+
+                    </Link>
+                    <Link href="https://youtube.com/playlist?list=PLu71SKxNbfoCXO80Z4miZHTL5GxfFbz7A&si=nMAy8Eaw9kY2MqxE" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
+                      <img src="https://i.ytimg.com/vi/3BEn2E9PvBM/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLATU7lpzVG7UM6sIVJ0EP-vZcRzJw" className="h-27 w-48" alt="" />
+                      <p className="text-sm">🔗 Learn Web Authentication</p>
+
+
+                    </Link>
+                    <Link href="https://youtube.com/playlist?list=PLt5mNkGuWcuWbFcwT8V5a_BpLVa1AVXD4&si=LUAHVcsFs2ye-G0e" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
+                      <img src="https://i.ytimg.com/vi/cr1XaYBqlhs/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAzi5fJY8_J6KlN6eX3cabuxOcjcw" className="h-27 w-48" alt="" />
+                      <p className="text-sm">🔗 Learn Chat App with Socket IO</p>
+
+
+                    </Link>
+                    <Link href="https://youtu.be/q8EevlEpQ2A?si=q6zM0VztZJuQ8KYB" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
+                      <img src="https://i.ytimg.com/vi/q8EevlEpQ2A/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLA3wvZ2tf440prOd9AGo4PhiRVUqw" className="h-27 w-48" alt="" />
+                      <p className="text-sm">🔗 Learn Git and Github</p>
+
+
+                    </Link>
 
 
 
 
+                  </div>
+                  <div className="secondRow">
+                    <div className="p-4 flex flex-row gap-3 justify-start item-start">
+
+                      <Link href="https://youtube.com/playlist?list=PLUcsbZa0qzu0gVRFlVfscqjD84TqMssOt&si=8-nnHuR2oyGe0KZH" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
+                        <img src="https://i.ytimg.com/pl_c/PLUcsbZa0qzu0gVRFlVfscqjD84TqMssOt/studio_square_thumbnail.jpg?sqp=CO6-v8kG-oaymwEICIAKENAFSFqi85f_AwYI3tvCwwY=&rs=AOn4CLAFl81pPQrL9aIcPNky4u65HLdXOw" className="h-27 w-48" alt="" />
+                        <p className="text-sm">🔗 Learn Java Spring Bootv</p>
+
+
+                      </Link>
+                      <Link href="https://youtu.be/ig26iRcMavQ?si=ohYLpvSPcI1N4bOT" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
+                        <img src="https://i.ytimg.com/vi/ArmPzvHTcfQ/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLA8QseBspGKnXKVkc9vS1fQ-yoqwA" className="h-27 w-48" alt="" />
+                        <p className="text-sm">🔗 Advance Web Project</p>
+
+
+                      </Link>
+                      <Link href="https://youtube.com/playlist?list=PLjiHFwhbHYlEmPhn68XdG2p2k4X47XR-8&si=BE7IFajYHK1bl7yQ" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
+                        <img src="https://i.ytimg.com/vi/BOt3MNB71gI/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAMChmO3IQL0gfGfqQMQmD3Op08CQ" className="h-27 w-48" alt="" />
+                        <p className="text-sm">🔗 Learn UI/UX Design</p>
+
+
+                      </Link>
+                      <Link href="https://youtu.be/JmpDGMgRFfo?si=jyVamlLdNkMkOBzF" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
+                        <img src="https://i.ytimg.com/vi/JmpDGMgRFfo/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDFP-6Og6xq9IfPPD4UquzR8w62OQ" className="h-27 w-48" alt="" />
+                        <p className="text-sm">🔗 Advance Backend Project</p>
+
+
+                      </Link>
+
+
+
+
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+            </details>
+
+            <details className="group [&amp;_summary::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer items-center justify-between gap-4 border-2 border-black bg-white px-4 py-3 font-medium text-gray-900 shadow-[4px_4px_0_0] hover:bg-yellow-100 focus:bg-yellow-100 focus:outline-0">
+                <span className="font-semibold">Learn App Development (React Native)</span>
+
+                <svg className="size-5 shrink-0 group-open:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+
+              <div className="p-4 flex flex-row gap-3 justify-start item-start">
+
+                <Link href="https://youtu.be/CzJQEstIiEI?si=AI86ghQYsssVHDNw" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
+                  <img src="https://i.ytimg.com/vi/ZBCUegTZF7M/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBf4c4C8CtzjjIRjTxeTVBydv4p7Q" className="h-27 w-48" alt="" />
+                  <p className="text-sm">🔗 Learn React Native</p>
+
+
+                </Link>
+
+
+
+
+              </div>
+            </details>
+
+            <details className="group [&amp;_summary::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer items-center justify-between gap-4 border-2 border-black bg-white px-4 py-3 font-medium text-gray-900 shadow-[4px_4px_0_0] hover:bg-yellow-100 focus:bg-yellow-100 focus:outline-0">
+                <span className="font-semibold">Learn Python</span>
+
+                <svg className="size-5 shrink-0 group-open:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+
+              <div className="p-4 flex flex-row gap-3 justify-start item-start">
+
+                <Link href="https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg&si=v2yF1Y-QylPBza0c" target="_blank" className="learnWebDev flex flex-col gap-3 items-start justify-start">
+                  <img src="https://i.ytimg.com/vi/7wnove7K-ZQ/hqdefault.jpg?sqp=-oaymwEXCOADEI4CSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDMirEJX-r2pxI5nylJWpyclDDEcg" className="h-27 w-48" alt="" />
+                  <p className="text-sm">🔗 Learn Basics of Python</p>
+
+
+                </Link>
+
+
+                {/* <a href="https://youtube.com/playlist?list=PLu0W_9lII9agq5TrH9XLIKQvv0iaF2X3w&si=JEWbUXmLUurJZrDq"> 🔗 Learn Web Development from Scratch by Code With Harry</a>
+                    <a href="https://youtube.com/playlist?list=PLu71SKxNbfoCXO80Z4miZHTL5GxfFbz7A&si=cqHeng9K2_w1QPKc"> 🔗 Learn Web Authentication by ChaiAurCode</a>
+                    <a href="https://youtube.com/playlist?list=PLt5mNkGuWcuWbFcwT8V5a_BpLVa1AVXD4&si=1KzV4-wj2-OMBe0k"> 🔗 Learn Chat App with Socket IO by 6PackProgrammer</a> */}
+
+
+              </div>
+            </details>
           </div>
 
         </section>
@@ -560,23 +708,23 @@ export default function PortfolioPage() {
 
               <div className="onebyone flex flex-col">
                 <img src="https://upload.wikimedia.org/wikipedia/en/8/86/Karnali_Blues_by_Buddhisagar.jpg" className="h-32 lg:h-42" alt="" />
-                <h1 className="text-xs">Karnali Blues</h1>
-                <h2 className="text-xs italic">⭐ 9/10</h2>
+                <h1 className="text-sm">Karnali Blues</h1>
+                <h2 className="text-sm italic">⭐ 9/10</h2>
               </div>
               <div className="onebyone flex flex-col">
                 <img src="https://img.drz.lazcdn.com/static/np/p/3b4328af29f327c02b796ef67c2b1dc8.jpg_720x720q80.jpg" className="h-32 lg:h-42" alt="" />
-                <h1 className="text-xs">Aithan</h1>
-                <h2 className="text-xs italic">⭐ 6/10</h2>
+                <h1 className="text-sm">Aithan</h1>
+                <h2 className="text-sm italic">⭐ 6/10</h2>
               </div>
               <div className="onebyone flex flex-col">
                 <img src="https://media.thuprai.com/front_covers/ek-sarko-maya_front.jpg" className="h-32 lg:h-42" alt="" />
-                <h1 className="text-xs">Ek sarko Maya</h1>
-                <h2 className="text-xs italic">⭐ 8/10</h2>
+                <h1 className="text-sm">Ek sarko Maya</h1>
+                <h2 className="text-sm italic">⭐ 8/10</h2>
               </div>
               <div className="onebyone flex flex-col">
                 <img src="https://static-01.daraz.com.np/p/5e839d6b91f98053bfb8bc2ad1c20859.jpg" className="h-32 lg:h-42" alt="" />
-                <h1 className="text-xs">Radha</h1>
-                <h2 className="text-xs italic">⭐ -/10</h2>
+                <h1 className="text-sm">Radha</h1>
+                <h2 className="text-sm italic">⭐ -/10</h2>
               </div>
 
 
@@ -588,23 +736,23 @@ export default function PortfolioPage() {
 
               <div className="onebyone flex flex-col">
                 <img src="https://upload.wikimedia.org/wikipedia/en/d/d9/Summer_Love_%28novel%29.jpg" className="h-32 lg:h-42" alt="" />
-                <h1 className="text-xs">SummerLove</h1>
-                <h2 className="text-xs italic">⭐ 9/10</h2>
+                <h1 className="text-sm">SummerLove</h1>
+                <h2 className="text-sm italic">⭐ 9/10</h2>
               </div>
               <div className="onebyone flex flex-col">
                 <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1407659398i/22889351.jpg" className="h-32 lg:h-42" alt="" />
-                <h1 className="text-xs">Saaya</h1>
-                <h2 className="text-xs italic">⭐ 8/10</h2>
+                <h1 className="text-sm">Saaya</h1>
+                <h2 className="text-sm italic">⭐ 8/10</h2>
               </div>
               <div className="onebyone flex flex-col">
                 <img src="https://upload.wikimedia.org/wikipedia/en/a/a0/Phirphire_%28novel%29.jpg" className="h-32 lg:h-42" alt="" />
-                <h1 className="text-xs">Firfire</h1>
-                <h2 className="text-xs italic">⭐ -/10</h2>
+                <h1 className="text-sm">Firfire</h1>
+                <h2 className="text-sm italic">⭐ -/10</h2>
               </div>
               <div className="onebyone flex flex-col">
                 <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1407659398i/22889351.jpg" className="h-32 lg:h-42" alt="" />
-                <h1 className="text-xs">Saaya</h1>
-                <h2 className="text-xs italic">⭐ 8/10</h2>
+                <h1 className="text-sm">Saaya</h1>
+                <h2 className="text-sm italic">⭐ 8/10</h2>
               </div>
 
 
@@ -615,8 +763,8 @@ export default function PortfolioPage() {
             <div className="flex gap-3 flex-row mx-5 mb-10">
               <div className="onebyone flex flex-col">
                 <img src="https://upload.wikimedia.org/wikipedia/en/4/47/Seto_Dharti_by_Amar_Neupane.jpg" className="h-32 lg:h-42" alt="" />
-                <h1 className="text-xs">Seto Dharti</h1>
-                <h2 className="text-xs italic">⭐ -/10</h2>
+                <h1 className="text-sm">Seto Dharti</h1>
+                <h2 className="text-sm italic">⭐ -/10</h2>
               </div>
 
 
@@ -625,18 +773,18 @@ export default function PortfolioPage() {
 
 
                 <img src="https://api.bookslandnepal.com/images/9789355434029-7405-1742210004644-1744121898646-1744123176821-1745659240929.jpeg?size=lg" className="h-32 lg:h-42" alt="" />
-                <h1 className="text-xs">Ikagai</h1>
-                <h2 className="text-xs italic">⭐ 8/10</h2>
+                <h1 className="text-sm">Ikagai</h1>
+                <h2 className="text-sm italic">⭐ 8/10</h2>
               </div>
               <div className="onebyone flex flex-col">
                 <img src="https://media.thuprai.com/front_covers/psychology-of-money.jpg" className="h-32 lg:h-42" alt="" />
-                <h1 className="text-xs">..</h1>
-                <h2 className="text-xs italic">⭐ 8/10</h2>
+                <h1 className="text-sm">..</h1>
+                <h2 className="text-sm italic">⭐ 8/10</h2>
               </div>
               <div className="onebyone flex flex-col">
                 <img src="https://heritagebooks.com.np/wp-content/uploads/2021/10/The-subtle-art-of-not-giving-fucck.jpg" className="h-32 lg:h-42" alt="" />
-                <h1 className="text-xs">..</h1>
-                <h2 className="text-xs italic">⭐ 7/10</h2>
+                <h1 className="text-sm">..</h1>
+                <h2 className="text-sm italic">⭐ 7/10</h2>
               </div>
 
 
