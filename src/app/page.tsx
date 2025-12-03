@@ -7,12 +7,13 @@ import { ToastContainer, toast } from "react-toastify";
 import * as React from 'react';
 import { images } from "./constants/images";
 import { Chip, Stack } from "@mui/material";
-import SpotlightCard from "./Components/Card";
 import "@/app/forFonts.css"
 import Link from "next/link";
-
+import Loader from "./Components/Loader";
 
 export default function PortfolioPage() {
+
+  //For Tabs
   const [active, setActive] = useState<number | null>(null);
   const [chatShow, setchatShow] = useState(false)
   const [techStackShow, setTechStackShow] = useState(false)
@@ -23,7 +24,7 @@ export default function PortfolioPage() {
   const [showBookie, setshowBookie] = useState(false)
   const [showSocialHandles, setshowSocialHandles] = useState(false)
 
-
+  //For Messaging
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState<string[]>([]);
   const [IsDataLoading, setIsDataLoading] = useState(false);
@@ -36,6 +37,7 @@ export default function PortfolioPage() {
   const inpRefName = useRef<HTMLInputElement | null>(null);
   const chatBoxRef = useRef<HTMLDivElement>(null);
 
+  //Toast
   const notify = () =>
     toast.error("Enter Something to Send", {
       position: "top-right",
@@ -47,7 +49,8 @@ export default function PortfolioPage() {
       progress: undefined,
       theme: "dark",
     });
-
+  
+  //Get Messages From DB
   const getDBmessage = async () => {
     setIsDataLoading(true);
     const res = await fetch("/api/getMessage");
@@ -55,6 +58,8 @@ export default function PortfolioPage() {
     setIsDataLoading(false);
     setChat(response);
   };
+
+  //Hit Enter To send
   const handleKeyDown = (e: any) => {
     if (e.key === "Enter") {
       handleclick();
@@ -107,9 +112,12 @@ export default function PortfolioPage() {
     <div className="  text-white font-sans min-h-screen overflow-x-hidden">
       <ToastContainer />
 
+      {/* Main Div */}
       <div className="homepage bg-[url('https://r4.wallpaperflare.com/wallpaper/974/565/254/windows-11-windows-10-minimalism-hd-wallpaper-c876bde870303c5820cce16ed8a244ca.jpg')]  w-screen bg-cover flex flex-col lg:flex-row-reverse items-center justify-evenly lg:justify-between h-[100vh]">
 
 
+
+      {/* My Info + Inosuke Pic */}
       <div className="myDetails flex px-5 relative w-screen lg:w-[80vw]  flex-col-reverse lg:flex-col   items-center ">
           <img className='lg:h-[50vh] h-80 -mt-5  ' src="https://www.pngmart.com/files/23/Inosuke-PNG-Photo.png" alt="" />
           <h1 className='lg:text-7xl text-4xl font-extrabold   tracking-wide   normalFont'>Binod's Homepage</h1>
@@ -119,12 +127,7 @@ export default function PortfolioPage() {
 
         </div>
 
-
-
-
-
-
-
+        {/* Folder Lists */}
         <div className="insideFolders flex lg:flex-col  w-[10vw] flex-col items-center justify-evenly lg:justify-start lg:item-start ">
           <div className="folders  justify-evenly mx-5 lg:mx-10 w-screen flex flex-row lg:flex-col  gap-5 ">
 
@@ -215,9 +218,7 @@ export default function PortfolioPage() {
         </div>
 
 
-
-        
-
+        {/* Absolute Divs Start */}
 
         {/* Chat Section */}
         <div
@@ -247,7 +248,7 @@ export default function PortfolioPage() {
           >
             {IsDataLoading ? (
               <div className="flex items-center justify-center h-full">
-                <p className="text-center text-lg text-gray-300">Loading chat...</p>
+                <Loader />
               </div>
             ) : (
               chat.map((msg: any, i) => (
@@ -303,7 +304,6 @@ export default function PortfolioPage() {
             </button>
           </div>
         </div>
-
 
         {/* Tech Stack Section */}
 
