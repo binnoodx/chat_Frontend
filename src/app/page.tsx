@@ -223,7 +223,7 @@ export default function PortfolioPage() {
         <div
           className={
             chatShow
-              ? `chatApp absolute border-1 border-white w-[90vw] lg:w-[40vw] lg:ml-[40vw]
+              ? `chatApp absolute border-1 border-white w-[90vw] lg:w-[40vw] lg:mr-[23vw]
           flex flex-col min-sm:h-[70vh] h-[75vh] lg:h-[75vh] bg-slate-800
           ${active === 4 ? "z-1" : "z-0 "}`
               : `chatApp w-[40vw] mr-[20vw] hidden flex-col min-sm:h-[70vh]
